@@ -18,7 +18,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Sabana Blues growing tunnels in Arcabuco, Boyacá, with the mountains behind">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="en_GB">
 <meta property="og:locale:alternate" content="es_CO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sabana Blues, blueberries from Eureka varieties in Colombia">
@@ -93,6 +93,8 @@ h1{font-size:var(--fs-h1);line-height:1.06;letter-spacing:-.015em}
 h2{font-size:var(--fs-h2);line-height:1.12;letter-spacing:-.012em}
 h3{font-size:var(--fs-h3);line-height:1.25}
 p{margin:0;max-width:var(--measure)}
+/* Sin palabras sueltas al final: pretty donde exista; si no, balance (textos cortos) */
+p,dd,.hecho .t{text-wrap:balance;text-wrap:pretty}
 ul,ol,dl,dd,figure{margin:0;padding:0}
 ul,ol{list-style:none}
 a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
@@ -163,12 +165,14 @@ a.lang-b{display:inline-flex;align-items:center;justify-content:center;text-deco
 /* ---------- Inicio: la foto de las naves a todo el ancho y una banda navy con el texto ---------- */
 .hero-foto{background:var(--sb-navy)}
 .hero-foto img{width:100%;height:clamp(20rem, calc(100svh - var(--bar-h) - 17rem), 46rem);object-fit:cover;object-position:50% 44%}
-.hero-in{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.25rem clamp(2rem,5vw,5rem);align-items:end;padding-block:clamp(2rem,3.4vw,3rem)}
+.hero-in{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.25rem clamp(2rem,5vw,5rem);align-items:start;padding-block:clamp(2rem,3.4vw,3rem)}
 .hero h1{font-weight:800;font-size:clamp(2rem, 1.3rem + 2.4vw, 3.25rem);max-width:19ch}
 .hero-side{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
 .hero .lede{color:var(--muted);max-width:40ch}
 @media (max-width:959.98px){
-  .hero-foto img{height:clamp(13rem, 50svh, 30rem);object-position:46% 66%}
+  /* La foto se acerca 1,7 veces: se ve del 21 % al 80 % de su alto (montaña y naves), sin el pasto ni casi toda la cortina */
+  .hero-foto{--hf-h:clamp(13rem, 50svh, 30rem);height:var(--hf-h);overflow:hidden}
+  .hero-foto img{height:calc(var(--hf-h) * 1.7);margin-top:calc(var(--hf-h) * -.36);object-position:56% 50%}
   .hero-in{grid-template-columns:1fr;padding-block:1.5rem 2rem;gap:1rem}
   .hero .lede{font-size:1.0625rem;line-height:1.5}
   .hero-side{gap:1.1rem}
@@ -207,7 +211,7 @@ section.band{padding-block:var(--section-y)}
 @media (max-width:419.98px){.rasgos{gap:1.5rem 1.25rem}}
 
 /* ---------- Origen: la cadena en cuatro fichas ---------- */
-.origen-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.25rem clamp(2rem,5vw,5rem);align-items:end}
+.origen-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.25rem clamp(2rem,5vw,5rem);align-items:start}
 .cadena{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
 .ficha-vis{aspect-ratio:4/5;border-radius:var(--r-photo);overflow:hidden;background:var(--sb-line)}
 .ficha-vis[aria-hidden]{background:var(--sb-aqua)}
@@ -255,7 +259,7 @@ section.band{padding-block:var(--section-y)}
 @media (max-width:479.98px){.packs{gap:.875rem}.packs img{aspect-ratio:1/1}.packs figcaption{flex-wrap:wrap;gap:0 .5rem;margin-top:.6rem}.pedido .btn{width:100%}}
 
 /* ---------- Banda del patrón (sin texto) ---------- */
-.banda-patron{height:4rem}
+.banda-patron{height:5rem}
 
 /* ---------- Pie ---------- */
 .pie{padding-block:clamp(3.5rem,6vw,5rem) 1.5rem}
@@ -265,7 +269,7 @@ section.band{padding-block:var(--section-y)}
 .pie ul{margin-top:.75rem}
 .pie li a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:none}
 .pie li a:hover{text-decoration:underline}
-.pie .langs{margin-top:.5rem;margin-left:-.4rem}
+.pie .langs{margin-top:.5rem;margin-left:-11.5px}
 .pie-base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem 2rem;margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1rem;border-top:1px solid var(--line);font-size:var(--fs-small);color:var(--muted)}
 .pie-base .legal{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem}
 .pie-base a{display:inline-flex;align-items:center;min-height:44px;color:var(--fg);font-weight:600}
@@ -283,7 +287,7 @@ section.band{padding-block:var(--section-y)}
 <svg class="patron-defs" aria-hidden="true" focusable="false" style="color:#00205C"><defs>
 <symbol id="s-sb1" viewBox="0 0 219.45 381.6"><mask id="aro-sb1" maskUnits="userSpaceOnUse" x="0" y="0" width="219.45" height="381.60"><rect width="219.45" height="381.60" fill="#fff"/><path d="M45.08 168.47C45.82 165.01 46.45 161.53 47.32 158.11C55.60 125.51 89.43 104.93 123.57 111.69C155.48 118.01 178.12 150.58 173.34 183.27C168.79 214.38 143.07 238.46 113.30 239.49C80.62 240.61 53.40 219.60 46.63 188.03C46.10 185.57 45.59 183.11 45.08 180.65Z" fill="none" stroke="#000" stroke-width="22.619"/></mask><g mask="url(#aro-sb1)" fill="currentColor"><path d="M108.06 156.19C44.01 122.48 30.53 61.80 48.51 0.00C48.51 0.00 142.89 55.06 108.06 156.19Z"/><path d="M103.26 145.51C99.85 89.45 134.68 56.09 182.92 43.15C182.92 43.15 184.37 127.93 103.26 145.51Z"/><path d="M219.02 171.22C219.02 165.19 216.25 162.49 210.12 162.39C202.37 162.26 194.61 162.33 186.85 162.33C177.02 162.34 167.20 162.28 157.38 162.40L42.83 162.40C37.73 162.39 32.62 162.39 27.52 162.40L25.25 162.40L25.25 162.40C19.40 162.42 13.54 162.44 7.68 162.48C3.00 162.51 0.57 165.23 0.18 169.93C0.04 171.52 0.06 173.13 0.06 174.73C0.05 183.11 0.05 184.54 0.05 184.19C0.05 185.57 0.05 188.00 0.05 192.09C0.05 211.18 0.09 239.88 0.04 258.97C0.00 272.81 1.17 286.52 4.75 299.92C13.69 333.37 32.69 358.52 65.28 372.01C85.23 380.27 106.17 381.60 127.35 378.93C154.41 375.51 177.00 363.56 194.00 341.96C210.94 320.42 218.38 295.28 218.78 268.38C219.45 222.45 219.04 217.15 219.02 171.22Z"/><path d="M45.08 168.47C45.82 165.01 46.45 161.53 47.32 158.11C55.60 125.51 89.43 104.93 123.57 111.69C155.48 118.01 178.12 150.58 173.34 183.27C168.79 214.38 143.07 238.46 113.30 239.49C80.62 240.61 53.40 219.60 46.63 188.03C46.10 185.57 45.59 183.11 45.08 180.65Z"/></g></symbol>
 <pattern id="sb1" width="100" height="116" patternUnits="userSpaceOnUse"><use href="#s-sb1" x="9" y="1.2" width="32" height="55.6"/><use href="#s-sb1" x="59" y="59.2" width="32" height="55.6"/></pattern>
-<pattern id="sb1-fila" width="100" height="64" patternUnits="userSpaceOnUse"><use href="#s-sb1" x="34" y="4.2" width="32" height="55.6"/></pattern></defs></svg>
+<pattern id="sb1-fila" width="100" height="80" patternUnits="userSpaceOnUse"><use href="#s-sb1" x="34" y="12.2" width="32" height="55.6"/></pattern></defs></svg>
 
 <a class="skip" href="#contenido"><span data-l="en">Skip to content</span></a>
 
@@ -346,7 +350,7 @@ section.band{padding-block:var(--section-y)}
 <main id="contenido" tabindex="-1">
   <section class="hero" id="inicio" aria-labelledby="h-inicio">
     <figure class="hero-foto">
-      <img src="/img/hero-arcabuco-naves.jpg" srcset="/img/hero-arcabuco-naves-1200.jpg 1200w, /img/hero-arcabuco-naves.jpg 2200w" sizes="100vw" width="2200" height="1457" fetchpriority="high" decoding="async"
+      <img src="/img/hero-arcabuco-naves.jpg" srcset="/img/hero-arcabuco-naves-1200.jpg 1200w, /img/hero-arcabuco-naves.jpg 2200w" sizes="(max-width: 959.98px) 170vw, 100vw" width="2200" height="1457" fetchpriority="high" decoding="async"
         alt="Sabana Blues growing tunnels in Arcabuco, Boyacá, with the mountains behind">
     </figure>
     <div class="bg-navy">
@@ -397,13 +401,13 @@ section.band{padding-block:var(--section-y)}
       </div>
       <ol class="cadena">
         <li class="ficha">
-          <div class="ficha-vis" aria-hidden="true"><svg class="patron" focusable="false"><rect width="100%" height="100%" fill="url(#sb1)"/></svg></div>
+          <div class="ficha-vis" aria-hidden="true"><svg class="patron" viewBox="0 0 320 400" focusable="false"><g transform="translate(10 26)"><rect width="300" height="348" fill="url(#sb1)"/></g></svg></div>
           <h3><span data-l="en">Genetics</span></h3>
           <p><span data-l="en">Eureka varieties, developed in Australia by Mountain Blue Orchards.</span></p>
         </li>
         <li class="ficha">
           <div class="ficha-vis"><img src="/img/vivero-engorde.jpg" width="1000" height="667" loading="lazy" decoding="async" style="object-position:50% 72%"
-            alt="Young blueberry plants in bags inside the nursery"></div>
+            alt="Young blueberry plants inside the nursery"></div>
           <h3><span data-l="en">Nursery</span></h3>
           <p><span data-l="en">We have our own nursery.</span></p>
         </li>
@@ -415,7 +419,7 @@ section.band{padding-block:var(--section-y)}
         </li>
         <li class="ficha">
           <div class="ficha-vis"><img src="/img/estuche-extra-500-piedra.jpg" width="1000" height="563" loading="lazy" decoding="async" style="object-position:50% 50%"
-            alt="Sabana Blues Extra 500 g clamshell of blueberries on a green stone slab, with loose fruit in front"></div>
+            alt="Sabana Blues Extra 500 g punnet of blueberries on a green stone slab, with loose fruit in front"></div>
           <h3><span data-l="en">Packing</span></h3>
           <p><span data-l="en">We pack at origin.</span></p>
         </li>
@@ -459,12 +463,12 @@ section.band{padding-block:var(--section-y)}
       <div class="packs">
         <figure>
           <img src="/img/estuche-jumbo-250.jpg" width="1200" height="675" loading="lazy" decoding="async"
-            alt="Sabana Blues Jumbo 250 g clamshell of blueberries on a wooden board, with loose fruit in front">
+            alt="Sabana Blues Jumbo 250 g punnet of blueberries on a wooden board, with loose fruit in front">
           <figcaption><strong>Jumbo</strong><span>250 g</span></figcaption>
         </figure>
         <figure>
           <img src="/img/estuche-extra-500.jpg" width="1200" height="675" loading="lazy" decoding="async"
-            alt="Sabana Blues Extra 500 g clamshell of blueberries on a wooden board, with loose fruit in front">
+            alt="Sabana Blues Extra 500 g punnet of blueberries on a wooden board, with loose fruit in front">
           <figcaption><strong>Extra</strong><span>500 g</span></figcaption>
         </figure>
       </div>
@@ -476,7 +480,7 @@ section.band{padding-block:var(--section-y)}
   </section>
 </main>
 
-<div class="banda-patron bg-aqua" aria-hidden="true"><svg class="patron" focusable="false"><rect width="100%" height="100%" fill="url(#sb1-fila)"/></svg></div>
+<div class="banda-patron bg-aqua" aria-hidden="true"><svg class="patron" focusable="false"><svg x="50%" overflow="visible"><rect x="-5000" width="10000" height="100%" fill="url(#sb1-fila)"/></svg></svg></div>
 
 <footer class="pie bg-navy">
   <div class="wrap">

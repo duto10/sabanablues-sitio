@@ -32,7 +32,7 @@ body{margin:0;background:var(--sb-paper);color:var(--sb-navy);font:400 1.0625rem
 main{flex:1;display:flex;align-items:center}
 main .wrap{padding-block:clamp(3.5rem,2rem + 5.5vw,7rem)}
 h1{margin:0;font-size:clamp(2rem,1.3rem + 2.4vw,3.25rem);line-height:1.08;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
-p{margin:1rem 0 0;max-width:40ch;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.55;color:var(--sb-navy-70)}
+p{margin:1rem 0 0;max-width:40ch;text-wrap:balance;text-wrap:pretty;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.55;color:var(--sb-navy-70)}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:1.75rem;padding:.8rem 1.5rem;border-radius:999px;background:var(--sb-navy);color:var(--sb-white);font:600 1rem/1.15 'Montserrat',system-ui,sans-serif;text-decoration:none;transition:background-color 180ms}
 .btn:hover{background:var(--sb-navy-deep)}
 .banda{height:clamp(2.75rem,2rem + 2.5vw,4.5rem);background:var(--sb-aqua)}
@@ -81,9 +81,8 @@ p{margin:1rem 0 0;max-width:40ch;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem)
 <div class="banda" aria-hidden="true"></div>
 <script>
 (function(){
-  var l="es";
-  if(/^\/en(\/|$)/.test(location.pathname))l="en";
-  else try{var s=localStorage.getItem("sb-lang");if(s==="en"||s==="es")l=s;else if(!/^es\b/i.test((navigator.languages&&navigator.languages[0])||navigator.language||"es"))l="en";}catch(e){}
+  // Español por defecto; inglés solo si la dirección empieza por /en/
+  var l=/^\/en(\/|$)/.test(location.pathname)?"en":"es";
   document.querySelectorAll("[data-l]").forEach(function(el){el.hidden=el.getAttribute("data-l")!==l;});
   document.documentElement.lang=l;
   if(l==="en"){document.title="This page doesn't exist · Sabana Blues";document.getElementById("volver").href="/en/";document.querySelector(".logo").href="/en/";}
