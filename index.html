@@ -30,248 +30,241 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Sabana Blues", "url": "https://sabanablues.com/", "logo": "https://sabanablues.com/favicon-192.png", "email": "info@sabanablues.com", "sameAs": ["https://www.linkedin.com/company/sabana-blues"]}</script>
-<meta name="theme-color" content="#00205C">
+<meta name="theme-color" content="#FAF7F0">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
 <style>
-/* Sabana Blues · dirección B «Azul de marca».
-   Bandas de color plano que alternan navy, aqua, blanco y papel. Tokens: docs/marca-web.md */
+/* Sabana Blues · versión minimalista.
+   Fondo papel, texto navy, líneas finas y aire. Berry solo en los botones de pedir.
+   Tokens: docs/marca-web.md */
 :root{
   color-scheme: light;
-  --sb-navy:#00205C; --sb-berry:#862363; --sb-aqua:#84DADE; --sb-green:#6CCA98; --sb-sand:#F0D283;
-  --sb-white:#FFFFFF; --sb-paper:#FAF7F0; --sb-navy-deep:#001948; --sb-berry-deep:#711D53;
-  --sb-navy-70:#4D638D; --sb-on-navy-soft:#CCD2DE; --sb-line:#D9DEE8;
+  --sb-navy:#00205C; --sb-navy-deep:#001948; --sb-navy-70:#4D638D;
+  --sb-navy-12:#DFE4EA; /* navy al 12 % sobre blanco: fondo de la foto mientras carga */
+  --sb-berry:#862363; --sb-berry-deep:#711D53;
+  --sb-paper:#FAF7F0; --sb-white:#FFFFFF;
+  --fg:var(--sb-navy); --muted:var(--sb-navy-70);
+  --line:rgba(0,32,92,.16); --ring:var(--sb-navy);
   --font-sans:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
-  --fs-h1:clamp(2.125rem, 1.45rem + 2.6vw, 3.5rem);
-  --fs-h2:clamp(1.75rem, 1.3rem + 1.9vw, 2.625rem);
-  --fs-h3:clamp(1.125rem, 1.02rem + .45vw, 1.375rem);
+  --fs-h1:clamp(2.25rem, 1.15rem + 4.1vw, 4.75rem);
+  --fs-h2:clamp(1.875rem, 1.3rem + 2.2vw, 3.25rem);
+  --fs-h3:clamp(1.125rem, 1.05rem + .3vw, 1.3125rem);
   --fs-lede:clamp(1.0625rem, 1rem + .35vw, 1.25rem);
-  --fs-body:clamp(1rem, .96rem + .2vw, 1.0625rem);
+  --fs-body:clamp(1rem, .97rem + .15vw, 1.0625rem);
   --fs-small:.875rem;
-  --fs-label:.8125rem;
-  --fs-dato:clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
-  --measure:62ch;
-  --r-photo:12px; --r-card:16px; --r-pill:999px;
-  --gutter:clamp(1rem, .5rem + 2.5vw, 2rem);
-  --section-y:clamp(3.5rem, 2rem + 5.5vw, 7rem);
-  --wrap:72rem;
-  --edge:max(var(--gutter), calc((100vw - var(--wrap)) / 2));
-  --bar-h:68px;
+  --fs-label:.75rem;
+  --fs-dato:clamp(2.75rem, 1.9rem + 3.2vw, 4.75rem);
+  --measure:60ch;
+  --r-photo:16px; --r-pill:999px;
+  --gutter:clamp(1.25rem, .6rem + 2.6vw, 2.5rem);
+  --section-y:clamp(4rem, 2.25rem + 5.5vw, 7.5rem);
+  --wrap:74rem;
+  --bar-h:64px;
   --dur:180ms; --ease:cubic-bezier(.2,.7,.2,1);
 }
-@media (min-width:1040px){:root{--bar-h:88px}}
-
-/* Cada fondo fija su texto, su acento, sus botones y su foco */
-:root,.bg-paper,.bg-white{
-  --fg:var(--sb-navy); --muted:var(--sb-navy-70); --accent-text:var(--sb-berry);
-  --primary:var(--sb-navy); --on-primary:var(--sb-white); --primary-hover:var(--sb-navy-deep);
-  --accent:var(--sb-berry); --on-accent:var(--sb-white); --accent-hover:var(--sb-berry-deep);
-  --ring:var(--sb-berry); --line:var(--sb-line); --logo:var(--sb-navy)}
-.bg-aqua{
-  --fg:var(--sb-navy); --muted:var(--sb-navy); --accent-text:var(--sb-berry);
-  --primary:var(--sb-navy); --on-primary:var(--sb-white); --primary-hover:var(--sb-navy-deep);
-  --accent:var(--sb-berry); --on-accent:var(--sb-white); --accent-hover:var(--sb-berry-deep);
-  --ring:var(--sb-navy); --line:rgba(0,32,92,.24); --logo:var(--sb-navy)}
-.bg-navy{
-  --fg:var(--sb-white); --muted:var(--sb-on-navy-soft); --accent-text:var(--sb-aqua);
-  --primary:var(--sb-white); --on-primary:var(--sb-navy); --primary-hover:var(--sb-aqua);
-  --accent:var(--sb-aqua); --on-accent:var(--sb-navy); --accent-hover:var(--sb-white);
-  --ring:var(--sb-sand); --line:rgba(255,255,255,.22); --logo:var(--sb-white)}
-.bg-paper{background:var(--sb-paper)} .bg-white{background:var(--sb-white)}
-.bg-aqua{background:var(--sb-aqua)}   .bg-navy{background:var(--sb-navy)}
-.bg-paper,.bg-white,.bg-aqua,.bg-navy{color:var(--fg)}
+@media (min-width:1040px){:root{--bar-h:80px}}
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-padding-top:calc(var(--bar-h) + 16px);-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--sb-paper);color:var(--fg);font-family:var(--font-sans);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{margin:0;background:var(--sb-paper);color:var(--fg);font-family:var(--font-sans);font-size:var(--fs-body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{display:block;max-width:100%;height:auto}
 h1,h2,h3{margin:0;font-weight:700;text-wrap:balance}
-h1{font-size:var(--fs-h1);line-height:1.06;letter-spacing:-.015em}
-h2{font-size:var(--fs-h2);line-height:1.12;letter-spacing:-.012em}
-h3{font-size:var(--fs-h3);line-height:1.25}
+h1{font-size:var(--fs-h1);font-weight:800;line-height:1.04;letter-spacing:-.025em}
+h2{font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.02em}
+h3{font-size:var(--fs-h3);line-height:1.3;letter-spacing:-.005em}
 p{margin:0;max-width:var(--measure)}
 /* Sin palabras sueltas al final: pretty donde exista; si no, balance (textos cortos) */
 p,dd,.hecho .t{text-wrap:balance;text-wrap:pretty}
 ul,ol,dl,dd,figure{margin:0;padding:0}
 ul,ol{list-style:none}
-a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
-:focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:4px}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+:focus-visible{outline:2px solid var(--ring);outline-offset:3px;border-radius:4px}
 .wrap{max-width:calc(var(--wrap) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
-.lede{font-size:var(--fs-lede);line-height:1.55}
-.label{font-size:var(--fs-label);font-weight:600;line-height:1.3;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-text)}
-.muted{color:var(--muted)}
+.lede{font-size:var(--fs-lede);line-height:1.55;color:var(--muted)}
+.label{font-size:var(--fs-label);font-weight:600;line-height:1.3;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
-.skip{position:fixed;left:var(--gutter);top:-100px;z-index:50;background:var(--sb-white);color:var(--sb-navy);font-weight:600;padding:.75rem 1.1rem;border-radius:var(--r-pill);text-decoration:none;min-height:44px;--ring:var(--sb-berry)}
+.skip{position:fixed;left:var(--gutter);top:-100px;z-index:50;display:inline-flex;align-items:center;background:var(--sb-navy);color:var(--sb-white);font-weight:600;padding:.75rem 1.1rem;border-radius:var(--r-pill);text-decoration:none;min-height:44px}
 .skip:focus{top:10px}
 
 /* Botones: una sola forma, píldora, sin íconos */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.8rem 1.5rem;border:0;border-radius:var(--r-pill);
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.8rem 1.6rem;border:0;border-radius:var(--r-pill);
   font:600 1rem/1.15 var(--font-sans);text-decoration:none;text-align:center;cursor:pointer;
   transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
-.btn-primary{background:var(--primary);color:var(--on-primary)} .btn-primary:hover{background:var(--primary-hover)}
-.btn-accent{background:var(--accent);color:var(--on-accent)}    .btn-accent:hover{background:var(--accent-hover)}
-.btn-line{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 2px currentColor}
-.btn-line:hover{background:var(--primary);color:var(--on-primary);box-shadow:inset 0 0 0 2px var(--primary)}
+.btn-primary{background:var(--sb-navy);color:var(--sb-white)} .btn-primary:hover{background:var(--sb-navy-deep)}
+.btn-accent{background:var(--sb-berry);color:var(--sb-white)} .btn-accent:hover{background:var(--sb-berry-deep)}
+.btn-line{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--sb-navy)}
+.btn-line:hover{background:var(--sb-navy);color:var(--sb-white)}
 
-/* Logo oficial (src/logo.svg) */
+/* Logo oficial (src/logo.svg), siempre en navy */
 .logo{display:block;line-height:0;flex:none}
 .logo svg{display:block;width:100%;height:auto}
-.logo svg path{fill:var(--logo)}
+.logo svg path{fill:var(--sb-navy)}
 .logo-compacto{aspect-ratio:4501.1/1653.1;overflow:hidden}
 .logo-compacto svg path:nth-child(n+12):nth-child(-n+29){display:none}
 .logo-barra{width:120px}
-@media (min-width:1040px){.logo-barra{width:140px}}
-.logo-pie{width:clamp(13.75rem, 10rem + 6vw, 16.25rem)}
-
-/* Patrón del símbolo (manual págs. 12 y 13) */
-.patron-defs{position:absolute;width:0;height:0;overflow:hidden}
-.patron{display:block;width:100%;height:100%}
+@media (min-width:1040px){.logo-barra{width:136px}}
+.logo-pie{width:clamp(13.75rem, 11rem + 5vw, 15.5rem)}
 
 /* ---------- Barra ---------- */
-.bar{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.12)}
+.bar{position:sticky;top:0;z-index:20;background:var(--sb-paper);border-bottom:1px solid var(--line)}
 .bar-in{height:var(--bar-h);display:flex;align-items:center;gap:12px}
 .nav{margin-left:auto}
 .nav ul{display:flex;align-items:center;gap:4px}
-.nav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 .8rem;font-weight:600;font-size:.9375rem;text-decoration:none;border-radius:var(--r-pill);color:var(--fg)}
-.nav ul a:hover{text-decoration:underline;text-decoration-color:var(--sb-aqua);text-decoration-thickness:2px;text-underline-offset:.45em}
+.nav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 .8rem;font-weight:500;font-size:.9375rem;text-decoration:none;border-radius:var(--r-pill)}
+.nav ul a:hover{text-decoration:underline;text-underline-offset:.5em}
 .nav-cta{display:none}
 .langs{display:flex;align-items:center;gap:2px;flex:none}
-.lang-b{min-width:44px;min-height:44px;padding:0 .4rem;border:0;background:transparent;color:var(--muted);font:600 .875rem/1 var(--font-sans);letter-spacing:.1em;cursor:pointer;border-radius:var(--r-pill)}
+.lang-b{min-width:44px;min-height:44px;padding:0 .4rem;color:var(--muted);font:600 .8125rem/1 var(--font-sans);letter-spacing:.12em;border-radius:var(--r-pill)}
 a.lang-b{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
-.lang-b[aria-current="page"]{color:var(--fg);text-decoration:underline;text-decoration-color:var(--accent-text);text-decoration-thickness:2px;text-underline-offset:.5em}
+.lang-b[aria-current="page"]{color:var(--fg);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.55em}
 .lang-b:hover{color:var(--fg)}
-.langs .sep{width:1px;height:16px;background:var(--line)}
-.bar .btn-bar{min-height:44px;padding:.65rem 1.15rem;font-size:.9375rem;flex:none}
-.menu-b{display:none;min-height:44px;min-width:44px;padding:0 1rem;border:0;border-radius:var(--r-pill);background:transparent;color:var(--fg);box-shadow:inset 0 0 0 2px rgba(255,255,255,.5);font:600 .9375rem/1 var(--font-sans);cursor:pointer;flex:none}
+.langs .sep{width:1px;height:14px;background:var(--line)}
+.bar .btn-bar{min-height:44px;padding:.6rem 1.15rem;font-size:.9375rem;flex:none;margin-left:.5rem}
+.menu-b{display:none;min-height:44px;min-width:44px;padding:0 1.1rem;border:0;border-radius:var(--r-pill);background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--sb-navy);font:600 .9375rem/1 var(--font-sans);cursor:pointer;flex:none}
 
 @media (max-width:1039.98px){
   .menu-b{display:inline-flex;align-items:center}
   .langs{margin-left:auto}
-  .nav{position:absolute;left:0;right:0;top:100%;margin:0;background:var(--sb-navy);border-top:1px solid rgba(255,255,255,.12);box-shadow:0 18px 30px rgba(0,25,72,.28);padding:.5rem var(--gutter) 1.25rem;display:none}
+  .nav{position:absolute;left:0;right:0;top:100%;margin:0;background:var(--sb-paper);border-bottom:1px solid var(--line);padding:.25rem var(--gutter) 1.5rem;box-shadow:0 28px 40px -28px rgba(0,32,92,.22);display:none}
   .bar.abierto .nav{display:block}
   .nav ul{flex-direction:column;align-items:stretch;gap:0}
-  .nav li{border-bottom:1px solid rgba(255,255,255,.12)}
-  .nav ul a{display:flex;min-height:52px;padding:0;font-size:1.0625rem;border-radius:0}
-  .nav-cta{display:block;margin-top:1rem}
+  .nav li{border-bottom:1px solid var(--line)}
+  .nav ul a{display:flex;min-height:56px;padding:0;font-size:1.125rem;font-weight:600;border-radius:0}
+  .nav-cta{display:block;margin-top:1.5rem}
   .nav-cta .btn{width:100%}
 }
 @media (max-width:599.98px){.bar .btn-bar{display:none}}
 @media (min-width:600px) and (max-width:1039.98px){.nav-cta{display:none}}
-
-/* ---------- Inicio: la foto de las naves a todo el ancho y una banda navy con el texto ---------- */
-.hero-foto{background:var(--sb-navy)}
-.hero-foto img{width:100%;height:clamp(20rem, calc(100svh - var(--bar-h) - 17rem), 46rem);object-fit:cover;object-position:50% 44%}
-.hero-in{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.25rem clamp(2rem,5vw,5rem);align-items:start;padding-block:clamp(2rem,3.4vw,3rem)}
-.hero h1{font-weight:800;font-size:clamp(2rem, 1.3rem + 2.4vw, 3.25rem);max-width:19ch}
-.hero-side{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
-.hero .lede{color:var(--muted);max-width:40ch}
-@media (max-width:959.98px){
-  /* La foto se acerca 1,7 veces: se ve del 21 % al 80 % de su alto (montaña y naves), sin el pasto ni casi toda la cortina */
-  .hero-foto{--hf-h:clamp(13rem, 50svh, 30rem);height:var(--hf-h);overflow:hidden}
-  .hero-foto img{height:calc(var(--hf-h) * 1.7);margin-top:calc(var(--hf-h) * -.36);object-position:56% 50%}
-  .hero-in{grid-template-columns:1fr;padding-block:1.5rem 2rem;gap:1rem}
-  .hero .lede{font-size:1.0625rem;line-height:1.5}
-  .hero-side{gap:1.1rem}
+/* Hasta 820 px el botón de pedir baja a una franja fija abajo, siempre a la vista.
+   Es el mismo enlace de la barra (no se duplica); la franja de papel va detrás y el pie se alarga lo mismo para no quedar tapado. */
+@media (max-width:820px){
+  :root{--pedir-h:calc(68px + env(safe-area-inset-bottom, 0px))}
+  .nav-cta{display:none}
+  .bar::after{content:"";position:fixed;left:0;right:0;bottom:0;height:var(--pedir-h);background:var(--sb-paper);border-top:1px solid var(--line)}
+  .bar .btn-bar{display:flex;position:fixed;z-index:1;left:var(--gutter);right:var(--gutter);bottom:calc(12px + env(safe-area-inset-bottom, 0px));margin:0;min-height:44px;font-size:1rem}
+  .pie{padding-bottom:var(--pedir-h)}
+  html{scroll-padding-bottom:var(--pedir-h)}
 }
 
-/* ---------- Franja de hechos ---------- */
-.hechos .wrap{padding-block:clamp(1.75rem,3vw,2.5rem)}
-.hechos ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-.hecho{display:flex;flex-direction:column;justify-content:flex-start;gap:.5rem;padding:0 clamp(1rem,3vw,2.5rem);border-left:1px solid var(--line)}
+/* ---------- Secciones: separadas solo por aire. Las únicas líneas son la franja de cifras y el borde de arriba del pie ---------- */
+section.band,.pie{padding-inline:var(--gutter)}
+section.band > .wrap,.pie > .wrap{max-width:var(--wrap);padding-inline:0}
+section.band > .wrap{padding-block:var(--section-y) 0}
+main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
+.cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem clamp(2rem,6vw,6rem);align-items:end}
+.cab .lede{padding-bottom:.35rem}
+@media (max-width:859.98px){.cab{grid-template-columns:1fr}.cab .lede{padding-bottom:0}}
+
+/* ---------- Inicio: titular, bajada y botón; la foto a la derecha en escritorio y debajo en celular ---------- */
+.hero-in{padding-block:clamp(2.75rem,1.25rem + 4.5vw,5rem) clamp(2.5rem,1.75rem + 2vw,3.5rem)}
+.hero h1{max-width:15ch}
+.hero .lede{margin-top:clamp(1.25rem,2vw,1.75rem);max-width:52ch;color:var(--fg)}
+.hero .btn{margin-top:clamp(1.75rem,2.5vw,2.25rem)}
+.hero-foto{position:relative;overflow:hidden;border-radius:var(--r-photo);aspect-ratio:2.25/1;background:var(--sb-navy-12)}
+.hero-foto img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 72%}
+@media (min-width:1040px){
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(3rem,5vw,5.5rem);align-items:center;padding-block:clamp(2.5rem,4vw,3.5rem) 0}
+  .hero-in{padding:0}
+  .hero h1{font-size:clamp(2.75rem,1rem + 3.6vw,4.25rem)}
+  .hero-foto{aspect-ratio:auto;height:clamp(28rem,36vw,35rem)}
+  .hero-foto img{object-position:50% 50%}
+}
+@media (max-width:699.98px){
+  /* En celular la foto se acerca: montaña y naves, sin casi nada del pasto */
+  .hero-foto{aspect-ratio:1/1}
+  .hero-foto img{width:150%;height:150%;left:-27%;top:-12%;object-position:50% 50%}
+}
+
+/* ---------- Cifras ---------- */
+.hechos .wrap{padding-block:clamp(3.5rem,2rem + 5vw,6.5rem) 0}
+.hechos ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--line)}
+.hecho{display:flex;flex-direction:column;gap:.85rem;padding:clamp(1.75rem,3vw,2.75rem) clamp(1rem,3vw,2.75rem);border-left:1px solid var(--line)}
 .hecho:first-child{padding-left:0;border-left:0}
-.hecho .v{font-size:var(--fs-dato);font-weight:700;line-height:1;white-space:nowrap;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.hecho .t{font-size:.9375rem;line-height:1.45;max-width:26ch}
+.hecho .v{font-size:var(--fs-dato);font-weight:700;line-height:1;white-space:nowrap;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.hecho .t{font-size:.9375rem;line-height:1.5;color:var(--muted);max-width:26ch}
 @media (max-width:719.98px){
   .hechos ul{grid-template-columns:1fr}
-  .hecho{flex-direction:row;justify-content:flex-end;align-items:center;gap:1rem;padding:.9rem 0;border-left:0;border-top:1px solid var(--line)}
-  .hecho:first-child{border-top:0;padding-top:0}
-  .hecho:last-child{padding-bottom:0}
-  .hecho .v{flex:none;width:8rem;font-size:1.75rem}
+  .hecho{flex-direction:row;align-items:center;gap:1rem;padding:1.25rem 0;border-left:0}
+  .hecho + .hecho{border-top:1px solid var(--line)}
+  .hecho .v{flex:none;width:9.25rem;font-size:2.25rem}
 }
 
-section.band{padding-block:var(--section-y)}
-
 /* ---------- La fruta ---------- */
-.fruta-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center}
-.fruta-foto img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:42% 50%}
-.fruta h2{max-width:16ch}
-.fruta .lede{margin-top:1.1rem}
-.rasgos{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem 2rem;margin-top:2.25rem}
-.rasgos div{border-top:2px solid var(--sb-navy);padding-top:.85rem}
-.rasgos dt{font-size:var(--fs-h3);font-weight:700;line-height:1.25}
-.rasgos dd{margin-top:.3rem}
+.fruta-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.fruta-foto img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:50% 45%;border-radius:var(--r-photo)}
+.fruta h2{max-width:14ch}
+.fruta .lede{margin-top:1.25rem}
+.rasgos{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;margin-top:2.5rem}
+.rasgos div{border-top:1px solid var(--line);padding-block:1.1rem 1.4rem}
+.rasgos dt{font-size:var(--fs-h3);font-weight:700;line-height:1.3}
+.rasgos dd{margin-top:.25rem;color:var(--muted)}
 @media (max-width:859.98px){
   .fruta-grid{grid-template-columns:1fr}
   .fruta-foto img{aspect-ratio:4/3}
 }
-@media (max-width:419.98px){.rasgos{gap:1.5rem 1.25rem}}
+@media (max-width:419.98px){.rasgos{column-gap:1.25rem}}
 
-/* ---------- Origen: la cadena en cuatro fichas ---------- */
-.origen-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.25rem clamp(2rem,5vw,5rem);align-items:start}
-.cadena{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
-.ficha-vis{aspect-ratio:4/5;border-radius:var(--r-photo);overflow:hidden;background:var(--sb-line)}
-.ficha-vis[aria-hidden]{background:var(--sb-aqua)}
-.ficha-vis img{width:100%;height:100%;object-fit:cover}
-.ficha h3{margin-top:1.1rem}
-.ficha p{margin-top:.4rem}
-.red{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:.75rem clamp(2rem,5vw,5rem);margin-top:clamp(3rem,5vw,4.5rem);padding-top:1.75rem;border-top:1px solid rgba(0,32,92,.2);align-items:baseline}
-.red p{font-size:var(--fs-lede);font-weight:600;line-height:1.5}
+/* ---------- Origen: una foto ancha y los cuatro pasos en columnas ---------- */
+.origen-foto{margin-top:clamp(2.5rem,4vw,4rem)}
+.origen-foto img{width:100%;aspect-ratio:21/9;object-fit:cover;object-position:50% 78%;border-radius:var(--r-photo)}
+.cadena{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto;gap:0 clamp(1.5rem,2.6vw,2.5rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
+.ficha{display:grid;grid-row:span 2;grid-template-rows:subgrid;align-content:start}
+.ficha p{margin-top:.5rem;max-width:none;color:var(--muted)}
+.red{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.5rem clamp(2rem,6vw,6rem);margin-top:clamp(3rem,5vw,4.5rem);align-items:baseline}
+.red p{font-size:var(--fs-lede);font-weight:500;line-height:1.5}
 @media (max-width:959.98px){
-  .origen-cab,.red{grid-template-columns:1fr}
-  .cadena{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}
+  .cadena{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;row-gap:2rem}
+  .ficha{display:block;grid-row:auto}
 }
-@media (max-width:559.98px){
-  .cadena{column-gap:.875rem;row-gap:1.75rem}
-  .ficha h3{margin-top:.75rem;font-size:1.0625rem}
-  .ficha p{font-size:.9375rem;line-height:1.5}
+@media (max-width:859.98px){.red{grid-template-columns:1fr}}
+@media (max-width:599.98px){
+  .origen-foto img{aspect-ratio:4/3;object-position:50% 85%}
+  .cadena{grid-template-columns:1fr;row-gap:1.75rem}
   .red p{font-size:1.0625rem}
 }
 
-/* ---------- Empresas: banda navy a todo el ancho ---------- */
-.empresas h2{margin-top:.9rem;max-width:20ch}
-.publicos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(1.5rem,4vw,3.5rem);margin-top:clamp(2rem,4vw,3rem)}
-.publicos div{padding-top:1.25rem;border-top:1px solid var(--line)}
-.publicos p{margin-top:.4rem;color:var(--muted)}
-.contacto{margin-top:clamp(2.5rem,4vw,3.5rem);border-radius:var(--r-card);padding:clamp(1.5rem,3vw,2.5rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem 2rem}
-.contacto .correo{display:inline-flex;align-items:center;min-height:48px;margin-top:.15rem;font-size:clamp(1.375rem, 1rem + 1.6vw, 2.25rem);font-weight:700;line-height:1.2;letter-spacing:-.01em;overflow-wrap:anywhere;padding-block:.2rem}
+/* ---------- Para empresas ---------- */
+.empresas h2,.casa h2{margin-top:1rem;max-width:20ch}
+.publicos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;gap:0 clamp(2rem,4vw,4rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
+.publicos div{display:grid;grid-row:span 2;grid-template-rows:subgrid;align-content:start}
+.publicos p{margin-top:.5rem;color:var(--muted)}
+.contacto{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem 2.5rem;margin-top:clamp(3.5rem,6vw,5.5rem)}
+.contacto > div:first-child > p{color:var(--muted)}
+.contacto .correo{display:inline-flex;align-items:center;min-height:48px;margin-top:.25rem;font-size:clamp(1.5rem, 1rem + 2.2vw, 2.75rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;overflow-wrap:anywhere;text-decoration:none}
+.contacto .correo:hover{text-decoration:underline}
 .contacto .acciones{display:flex;flex-wrap:wrap;gap:.75rem}
 @media (max-width:859.98px){
-  .publicos{grid-template-columns:1fr}
-  .publicos div{padding-block:1.1rem}
+  .publicos{grid-template-columns:1fr;grid-template-rows:none;row-gap:1.75rem}
+  .publicos div{display:block;grid-row:auto}
 }
 @media (max-width:479.98px){.contacto .acciones,.contacto .acciones .btn{width:100%}}
 
-/* ---------- Para tu casa: fondo blanco ---------- */
-.casa h2{margin-top:.9rem;max-width:22ch}
-.casa .presentaciones{margin-top:clamp(2rem,4vw,3rem);color:var(--sb-navy-70)}
-.packs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,2.5rem);margin-top:1rem}
+/* ---------- Para tu casa ---------- */
+.packs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,2.5rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
 .packs img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--r-photo)}
-.packs figcaption{display:flex;align-items:baseline;gap:.6rem;margin-top:.9rem}
+.packs figcaption{display:flex;align-items:baseline;gap:.6rem;margin-top:1rem}
 .packs strong{font-size:var(--fs-h3);font-weight:700}
-.packs figcaption span{color:var(--muted);font-weight:600}
-.pedido{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.25rem 3rem;align-items:center;margin-top:clamp(2rem,4vw,3rem);padding-top:clamp(1.5rem,3vw,2rem);border-top:1px solid var(--line)}
-.pedido a:not(.btn){font-weight:600;color:var(--sb-berry)}
+.packs figcaption span{color:var(--muted);font-weight:500}
+.pedido{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem 3rem;align-items:center;margin-top:clamp(2.5rem,4vw,3.5rem)}
+.pedido .lede{color:var(--fg)}
+.pedido a:not(.btn){font-weight:600}
 @media (max-width:719.98px){.pedido{grid-template-columns:1fr}.pedido .btn{justify-self:start}}
 @media (max-width:479.98px){.packs{gap:.875rem}.packs img{aspect-ratio:1/1}.packs figcaption{flex-wrap:wrap;gap:0 .5rem;margin-top:.6rem}.pedido .btn{width:100%}}
 
-/* ---------- Banda del patrón (sin texto) ---------- */
-.banda-patron{height:5rem}
-
 /* ---------- Pie ---------- */
-.pie{padding-block:clamp(3.5rem,6vw,5rem) 1.5rem}
+.pie > .wrap{padding-block:clamp(3.5rem,6vw,5.5rem) 1.5rem;border-top:1px solid var(--line)}
 .pie-grid{display:grid;grid-template-columns:minmax(0,1.8fr) repeat(2,minmax(0,1fr));gap:2.5rem clamp(1.5rem,4vw,3rem)}
-.pie-marca p{margin-top:1.25rem;color:var(--muted);max-width:34ch}
-.pie .label{color:var(--sb-aqua)}
+.pie-marca p{margin-top:1.5rem;color:var(--muted);max-width:34ch}
 .pie ul{margin-top:.75rem}
-.pie li a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:none}
+.pie li a{display:inline-flex;align-items:center;min-height:44px;font-weight:500;text-decoration:none}
 .pie li a:hover{text-decoration:underline}
 .pie .langs{margin-top:.5rem;margin-left:-11.5px}
-.pie-base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem 2rem;margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1rem;border-top:1px solid var(--line);font-size:var(--fs-small);color:var(--muted)}
+.pie-base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem 2rem;margin-top:clamp(2.5rem,5vw,4rem);font-size:var(--fs-small);color:var(--muted)}
 .pie-base .legal{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem}
 .pie-base a{display:inline-flex;align-items:center;min-height:44px;color:var(--fg);font-weight:600}
 @media (max-width:899.98px){.pie-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pie-marca{grid-column:1/-1}}
@@ -285,14 +278,9 @@ section.band{padding-block:var(--section-y)}
 <body>
 
 
-<svg class="patron-defs" aria-hidden="true" focusable="false" style="color:#00205C"><defs>
-<symbol id="s-sb1" viewBox="0 0 219.45 381.6"><mask id="aro-sb1" maskUnits="userSpaceOnUse" x="0" y="0" width="219.45" height="381.60"><rect width="219.45" height="381.60" fill="#fff"/><path d="M45.08 168.47C45.82 165.01 46.45 161.53 47.32 158.11C55.60 125.51 89.43 104.93 123.57 111.69C155.48 118.01 178.12 150.58 173.34 183.27C168.79 214.38 143.07 238.46 113.30 239.49C80.62 240.61 53.40 219.60 46.63 188.03C46.10 185.57 45.59 183.11 45.08 180.65Z" fill="none" stroke="#000" stroke-width="22.619"/></mask><g mask="url(#aro-sb1)" fill="currentColor"><path d="M108.06 156.19C44.01 122.48 30.53 61.80 48.51 0.00C48.51 0.00 142.89 55.06 108.06 156.19Z"/><path d="M103.26 145.51C99.85 89.45 134.68 56.09 182.92 43.15C182.92 43.15 184.37 127.93 103.26 145.51Z"/><path d="M219.02 171.22C219.02 165.19 216.25 162.49 210.12 162.39C202.37 162.26 194.61 162.33 186.85 162.33C177.02 162.34 167.20 162.28 157.38 162.40L42.83 162.40C37.73 162.39 32.62 162.39 27.52 162.40L25.25 162.40L25.25 162.40C19.40 162.42 13.54 162.44 7.68 162.48C3.00 162.51 0.57 165.23 0.18 169.93C0.04 171.52 0.06 173.13 0.06 174.73C0.05 183.11 0.05 184.54 0.05 184.19C0.05 185.57 0.05 188.00 0.05 192.09C0.05 211.18 0.09 239.88 0.04 258.97C0.00 272.81 1.17 286.52 4.75 299.92C13.69 333.37 32.69 358.52 65.28 372.01C85.23 380.27 106.17 381.60 127.35 378.93C154.41 375.51 177.00 363.56 194.00 341.96C210.94 320.42 218.38 295.28 218.78 268.38C219.45 222.45 219.04 217.15 219.02 171.22Z"/><path d="M45.08 168.47C45.82 165.01 46.45 161.53 47.32 158.11C55.60 125.51 89.43 104.93 123.57 111.69C155.48 118.01 178.12 150.58 173.34 183.27C168.79 214.38 143.07 238.46 113.30 239.49C80.62 240.61 53.40 219.60 46.63 188.03C46.10 185.57 45.59 183.11 45.08 180.65Z"/></g></symbol>
-<pattern id="sb1" width="100" height="116" patternUnits="userSpaceOnUse"><use href="#s-sb1" x="9" y="1.2" width="32" height="55.6"/><use href="#s-sb1" x="59" y="59.2" width="32" height="55.6"/></pattern>
-<pattern id="sb1-fila" width="100" height="80" patternUnits="userSpaceOnUse"><use href="#s-sb1" x="34" y="12.2" width="32" height="55.6"/></pattern></defs></svg>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
-<a class="skip" href="#contenido"><span data-l="es">Saltar al contenido</span></a>
-
-<header class="bar bg-navy" id="barra">
+<header class="bar" id="barra">
   <div class="wrap bar-in">
     <a class="logo logo-compacto logo-barra" href="#inicio" aria-label="Sabana Blues, inicio"><svg xmlns="http://www.w3.org/2000/svg" viewBox="787.7 1056.7 4501.1 1942.0">
 <path fill-rule="nonzero" fill="#232F60" fill-opacity="1" d="M 1867.484375 1585.296875 C 1846.886719 1523.566406 1826.699219 1463.078125 1804.984375 1398.015625 C 1781.84375 1463.234375 1760.433594 1523.582031 1738.539062 1585.296875 Z M 1800.589844 1735.664062 C 1764.253906 1735.664062 1727.914062 1736.003906 1691.589844 1735.445312 C 1681.625 1735.289062 1676.507812 1738.515625 1672.929688 1747.855469 C 1666.347656 1765.019531 1658.28125 1781.605469 1651.109375 1798.546875 C 1644.175781 1814.921875 1632.519531 1822.652344 1614.296875 1822.480469 C 1561.117188 1821.980469 1507.929688 1822.34375 1454.746094 1822.289062 C 1424.695312 1822.261719 1418.476562 1813.011719 1430.652344 1785.679688 C 1500.824219 1628.171875 1571.125 1470.722656 1641.382812 1313.253906 C 1670.296875 1248.441406 1699.667969 1183.824219 1727.859375 1118.699219 C 1736.59375 1098.519531 1749.574219 1089.519531 1771.578125 1090.441406 C 1797.859375 1091.539062 1824.226562 1091.023438 1850.550781 1090.621094 C 1868.601562 1090.34375 1879.464844 1098.085938 1886.585938 1115.03125 C 1980.679688 1338.921875 2075.226562 1562.621094 2169.601562 1786.390625 C 2180.335938 1811.851562 2173.644531 1822.203125 2146.445312 1822.265625 C 2092.734375 1822.390625 2039.023438 1822.023438 1985.316406 1822.457031 C 1967.066406 1822.605469 1955.589844 1815.148438 1949.378906 1797.960938 C 1943.492188 1781.65625 1935.835938 1765.976562 1930.230469 1749.589844 C 1926.582031 1738.933594 1920.992188 1735.15625 1909.582031 1735.390625 C 1873.265625 1736.128906 1836.921875 1735.664062 1800.589844 1735.664062 "/>
@@ -328,139 +316,134 @@ section.band{padding-block:var(--section-y)}
 </svg></a>
     <nav class="nav" id="menu" aria-label="Secciones">
       <ul>
-        <li><a href="#fruta"><span data-l="es">La fruta</span></a></li>
-        <li><a href="#origen"><span data-l="es">Origen</span></a></li>
-        <li><a href="#empresas"><span data-l="es">Para empresas</span></a></li>
-        <li><a href="#casa"><span data-l="es">Para tu casa</span></a></li>
+        <li><a href="#fruta">La fruta</a></li>
+        <li><a href="#origen">Origen</a></li>
+        <li><a href="#empresas">Para empresas</a></li>
+        <li><a href="#casa">Para tu casa</a></li>
       </ul>
-      <div class="nav-cta"><a class="btn btn-accent" href="#casa"><span data-l="es">Pedir a domicilio</span></a></div>
+      <div class="nav-cta"><a class="btn btn-accent" href="#casa">Pedir a domicilio</a></div>
     </nav>
     <div class="langs">
       <a class="lang-b" href="/" hreflang="es" lang="es" aria-label="Cambiar idioma a español" aria-current="page">ES</a>
       <span class="sep" aria-hidden="true"></span>
       <a class="lang-b" href="/en/" hreflang="en" lang="en" aria-label="Change language to English">EN</a>
     </div>
-    <a class="btn btn-accent btn-bar" href="#casa"><span data-l="es">Pedir a domicilio</span></a>
+    <a class="btn btn-accent btn-bar" href="#casa">Pedir a domicilio</a>
     <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="menu">
-      <span class="m-abrir"><span data-l="es">Menú</span></span>
-      <span class="m-cerrar" hidden><span data-l="es">Cerrar</span></span>
+      <span class="m-abrir">Menú</span>
+      <span class="m-cerrar" hidden>Cerrar</span>
     </button>
   </div>
 </header>
 
 <main id="contenido" tabindex="-1">
   <section class="hero" id="inicio" aria-labelledby="h-inicio">
-    <figure class="hero-foto">
-      <img src="/img/hero-arcabuco-naves.jpg" srcset="/img/hero-arcabuco-naves-1200.jpg 1200w, /img/hero-arcabuco-naves.jpg 2200w" sizes="(max-width: 959.98px) 170vw, 100vw" width="2200" height="1457" fetchpriority="high" decoding="async"
-        alt="Túneles del cultivo de Sabana Blues en Arcabuco, Boyacá, con las montañas al fondo">
-    </figure>
-    <div class="bg-navy">
-      <div class="wrap hero-in">
-        <h1 id="h-inicio"><span data-l="es">Nuestros arándanos empiezan por la genética</span></h1>
-        <div class="hero-side">
-          <p class="lede"><span data-l="es">Trabajamos con genética de Mountain Blue Orchards en Colombia desde 2017. Nuestras fincas y productores aliados siembran esas variedades, y empacamos en origen.</span></p>
-          <a class="btn btn-primary" href="#origen"><span data-l="es">Ver cómo cultivamos</span></a>
-        </div>
+    <div class="wrap">
+      <div class="hero-in">
+        <h1 id="h-inicio">Nuestros arándanos empiezan por la genética</h1>
+        <p class="lede">Trabajamos con genética de Mountain Blue Orchards en Colombia desde 2017. Nuestras fincas y productores aliados siembran esas variedades, y empacamos en origen.</p>
+        <a class="btn btn-primary" href="#origen">Ver cómo cultivamos</a>
       </div>
+      <figure class="hero-foto">
+        <img src="/img/hero-arcabuco-naves.jpg" srcset="/img/hero-arcabuco-naves-1200.jpg 1200w, /img/hero-arcabuco-naves.jpg 2200w" sizes="(max-width: 699.98px) 150vw, (max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" fetchpriority="high" decoding="async"
+          alt="Túneles del cultivo de Sabana Blues en Arcabuco, Boyacá, con las montañas al fondo">
+      </figure>
     </div>
   </section>
 
-  <div class="hechos bg-aqua">
+  <div class="hechos">
     <div class="wrap">
       <ul>
-        <li class="hecho"><span class="v">2017</span> <span class="t"><span data-l="es">Desde entonces, con genética de Mountain Blue Orchards</span></span></li>
-        <li class="hecho"><span class="v">2018</span> <span class="t"><span data-l="es">Empezamos en Arcabuco, Boyacá</span></span></li>
-        <li class="hecho"><span class="v"><span data-l="es">2.530 m</span></span> <span class="t"><span data-l="es">Altura aproximada de la finca de Arcabuco</span></span></li>
+        <li class="hecho"><span class="v">2017</span> <span class="t">Desde entonces, con genética de Mountain Blue Orchards</span></li>
+        <li class="hecho"><span class="v">2018</span> <span class="t">Empezamos en Arcabuco, Boyacá</span></li>
+        <li class="hecho"><span class="v">2.530 m</span> <span class="t">Altura aproximada de la finca de Arcabuco</span></li>
       </ul>
     </div>
   </div>
 
-  <section class="band fruta bg-white" id="fruta" aria-labelledby="h-fruta">
+  <section class="band fruta" id="fruta" aria-labelledby="h-fruta">
     <div class="wrap fruta-grid">
       <figure class="fruta-foto">
         <img src="/img/fruta-pruina-tazon.jpg" width="1600" height="1067" loading="lazy" decoding="async"
           alt="Arándanos con su pruina en un tazón blanco, vistos desde arriba">
       </figure>
       <div>
-        <h2 id="h-fruta"><span data-l="es">Así se reconoce un Sabana Blues</span></h2>
-        <p class="lede"><span data-l="es">Cultivamos variedades Eureka, desarrolladas en Australia por Mountain Blue Orchards. La fruta tiene cuatro rasgos que cualquiera nota.</span></p>
+        <h2 id="h-fruta">Así se reconoce un Sabana Blues</h2>
+        <p class="lede">Cultivamos variedades Eureka, desarrolladas en Australia por Mountain Blue Orchards. La fruta tiene cuatro rasgos que cualquiera nota.</p>
         <dl class="rasgos">
-          <div><dt><span data-l="es">Grande</span></dt><dd><span data-l="es">Se ve sin abrir el estuche.</span></dd></div>
-          <div><dt><span data-l="es">Firme</span></dt><dd><span data-l="es">Se siente al apretarla un poco.</span></dd></div>
-          <div><dt><span data-l="es">Crocante</span></dt><dd><span data-l="es">Se oye al morderla.</span></dd></div>
-          <div><dt><span data-l="es">Dulce</span></dt><dd><span data-l="es">Es lo que queda al final.</span></dd></div>
+          <div><dt>Grande</dt><dd>Se ve sin abrir el estuche.</dd></div>
+          <div><dt>Firme</dt><dd>Se siente al apretarla un poco.</dd></div>
+          <div><dt>Crocante</dt><dd>Se oye al morderla.</dd></div>
+          <div><dt>Dulce</dt><dd>Es lo que queda al final.</dd></div>
         </dl>
       </div>
     </div>
   </section>
 
-  <section class="band origen bg-paper" id="origen" aria-labelledby="h-origen">
+  <section class="band origen" id="origen" aria-labelledby="h-origen">
     <div class="wrap">
-      <div class="origen-cab">
-        <h2 id="h-origen"><span data-l="es">De la planta al empaque</span></h2>
-        <p class="lede"><span data-l="es">Todas las plantas, las de nuestras fincas y las de los productores aliados, salen de nuestro vivero. Estamos integrados verticalmente.</span></p>
+      <div class="cab">
+        <h2 id="h-origen">De la planta al empaque</h2>
+        <p class="lede">Todas las plantas, las de nuestras fincas y las de los productores aliados, salen de nuestro vivero. Estamos integrados verticalmente.</p>
       </div>
+      <figure class="origen-foto">
+        <img src="/img/vivero-engorde.jpg" width="1000" height="667" loading="lazy" decoding="async"
+          alt="Plantas jóvenes de arándano dentro del vivero">
+      </figure>
       <ol class="cadena">
         <li class="ficha">
-          <div class="ficha-vis" aria-hidden="true"><svg class="patron" viewBox="0 0 320 400" focusable="false"><g transform="translate(10 26)"><rect width="300" height="348" fill="url(#sb1)"/></g></svg></div>
-          <h3><span data-l="es">La genética</span></h3>
-          <p><span data-l="es">Variedades Eureka, desarrolladas en Australia por Mountain Blue Orchards.</span></p>
+          <h3>La genética</h3>
+          <p>Variedades Eureka, desarrolladas en Australia por Mountain Blue Orchards.</p>
         </li>
         <li class="ficha">
-          <div class="ficha-vis"><img src="/img/vivero-engorde.jpg" width="1000" height="667" loading="lazy" decoding="async" style="object-position:50% 72%"
-            alt="Plantas jóvenes de arándano dentro del vivero"></div>
-          <h3><span data-l="es">El vivero</span></h3>
-          <p><span data-l="es">Tenemos vivero propio.</span></p>
+          <h3>El vivero</h3>
+          <p>Tenemos vivero propio.</p>
         </li>
         <li class="ficha">
-          <div class="ficha-vis"><img src="/img/cultivo-hileras-tunel.jpg" width="1000" height="931" loading="lazy" decoding="async" style="object-position:50% 55%"
-            alt="Hileras de plantas de arándano en bolsas bajo los túneles del cultivo en Arcabuco, Boyacá"></div>
-          <h3><span data-l="es">Fincas y aliados</span></h3>
-          <p><span data-l="es">Fincas propias y una red de productores aliados que siembran esas variedades y nos venden su cosecha.</span></p>
+          <h3>Fincas y aliados</h3>
+          <p>Fincas propias y una red de productores aliados que siembran esas variedades y nos venden su cosecha.</p>
         </li>
         <li class="ficha">
-          <div class="ficha-vis"><img src="/img/estuche-extra-500-piedra.jpg" width="1000" height="563" loading="lazy" decoding="async" style="object-position:50% 50%"
-            alt="Estuche de arándanos Sabana Blues Extra de 500 g sobre una piedra verde, con fruta suelta al frente"></div>
-          <h3><span data-l="es">El empaque</span></h3>
-          <p><span data-l="es">Empacamos en origen.</span></p>
+          <h3>El empaque</h3>
+          <p>Empacamos en origen.</p>
         </li>
       </ol>
       <div class="red">
-        <h3><span data-l="es">Nuestra red crece en cinco departamentos</span></h3>
+        <h3>Nuestra red crece en cinco departamentos</h3>
         <p>Boyacá, Cundinamarca, Tolima, Antioquia, Putumayo</p>
       </div>
     </div>
   </section>
 
-  <section class="band empresas bg-navy" id="empresas" aria-labelledby="h-empresas">
+  <section class="band empresas" id="empresas" aria-labelledby="h-empresas">
     <div class="wrap">
-      <p class="label"><span data-l="es">Para empresas</span></p>
-      <h2 id="h-empresas"><span data-l="es">Si es por negocios, escríbenos</span></h2>
+      <p class="label">Para empresas</p>
+      <h2 id="h-empresas">Si es por negocios, escríbenos</h2>
       <div class="publicos">
-        <div><h3><span data-l="es">Supermercados y clientes institucionales</span></h3><p><span data-l="es">Llevamos la fruta a supermercados en Colombia. Viene en dos presentaciones, Jumbo 250 g y Extra 500 g.</span></p></div>
-        <div><h3><span data-l="es">Socios e inversionistas</span></h3><p><span data-l="es">Somos una operación integrada, de la planta al empaque. El detalle lo damos por correo.</span></p></div>
-        <div><h3><span data-l="es">Productores</span></h3><p><span data-l="es">Los productores aliados siembran variedades Eureka con plantas de nuestro vivero y nos venden su cosecha.</span></p></div>
+        <div><h3>Supermercados y clientes institucionales</h3><p>Llevamos la fruta a supermercados en Colombia. Viene en dos presentaciones, Jumbo 250 g y Extra 500 g.</p></div>
+        <div><h3>Socios e inversionistas</h3><p>Somos una operación integrada, de la planta al empaque. El detalle lo damos por correo.</p></div>
+        <div><h3>Productores</h3><p>Los productores aliados siembran variedades Eureka con plantas de nuestro vivero y nos venden su cosecha.</p></div>
       </div>
-      <div class="contacto bg-aqua">
+      <div class="contacto">
         <div>
-          <p><span data-l="es">Escríbenos a</span></p>
+          <p>Escríbenos a</p>
           <a class="correo" id="correo" href="mailto:info@sabanablues.com?subject=Contacto%20desde%20sabanablues.com">info@sabanablues.com</a>
         </div>
         <div class="acciones">
-          <a class="btn btn-primary mailto" href="mailto:info@sabanablues.com?subject=Contacto%20desde%20sabanablues.com"><span data-l="es">Escribir un correo</span></a>
-          <button class="btn btn-line" id="copiar" type="button"><span class="c-0"><span data-l="es">Copiar</span></span><span class="c-1" hidden><span data-l="es">Copiado</span></span></button>
-          <a class="btn btn-line" href="https://www.linkedin.com/company/sabana-blues" target="_blank" rel="noopener"><span data-l="es">Ver en LinkedIn</span><span class="sr"> <span data-l="es">se abre en otra pestaña</span></span></a>
+          <a class="btn btn-primary mailto" href="mailto:info@sabanablues.com?subject=Contacto%20desde%20sabanablues.com">Escribir un correo</a>
+          <button class="btn btn-line" id="copiar" type="button"><span class="c-0">Copiar</span><span class="c-1" hidden>Copiado</span></button>
+          <a class="btn btn-line" href="https://www.linkedin.com/company/sabana-blues" target="_blank" rel="noopener">Ver en LinkedIn<span class="sr"> se abre en otra pestaña</span></a>
           <span class="sr" id="copiado-aviso" aria-live="polite"></span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band casa bg-white" id="casa" aria-labelledby="h-casa">
+  <section class="band casa" id="casa" aria-labelledby="h-casa">
     <div class="wrap">
-      <p class="label"><span data-l="es">Para tu casa</span></p>
-      <h2 id="h-casa"><span data-l="es">Arándanos a domicilio en Bogotá y Sabana Norte</span></h2>
-      <p class="label presentaciones"><span data-l="es">Presentaciones</span></p>
+      <p class="label">Para tu casa</p>
+      <h2 id="h-casa">Arándanos a domicilio en Bogotá y Sabana Norte</h2>
+      <h3 class="sr">Presentaciones</h3>
       <div class="packs">
         <figure>
           <img src="/img/estuche-jumbo-250.jpg" width="1200" height="675" loading="lazy" decoding="async"
@@ -474,16 +457,14 @@ section.band{padding-block:var(--section-y)}
         </figure>
       </div>
       <div class="pedido">
-        <p class="lede"><span data-l="es">Hacemos domicilios en Bogotá y Sabana Norte, los jueves y sábados. Si estás en otra ciudad o compras para un supermercado, escríbenos a <a href="mailto:info@sabanablues.com">info@sabanablues.com</a>.</span></p>
-        <a class="btn btn-accent wa" href="https://wa.me/573108071143?text=Hola%2C%20quiero%20pedir%20ar%C3%A1ndanos%20a%20domicilio.%20Estoy%20en%20" target="_blank" rel="noopener"><span data-l="es">Pedir por WhatsApp</span><span class="sr"> <span data-l="es">se abre en otra pestaña</span></span></a>
+        <p class="lede">Hacemos domicilios en Bogotá y Sabana Norte, los jueves y sábados. Si estás en otra ciudad o compras para un supermercado, escríbenos a <a href="mailto:info@sabanablues.com">info@sabanablues.com</a>.</p>
+        <a class="btn btn-accent wa" href="https://wa.me/573108071143?text=Hola%2C%20quiero%20pedir%20ar%C3%A1ndanos%20a%20domicilio.%20Estoy%20en%20" target="_blank" rel="noopener">Pedir por WhatsApp<span class="sr"> se abre en otra pestaña</span></a>
       </div>
     </div>
   </section>
 </main>
 
-<div class="banda-patron bg-aqua" aria-hidden="true"><svg class="patron" focusable="false"><svg x="50%" overflow="visible"><rect x="-5000" width="10000" height="100%" fill="url(#sb1-fila)"/></svg></svg></div>
-
-<footer class="pie bg-navy">
+<footer class="pie">
   <div class="wrap">
     <div class="pie-grid">
       <div class="pie-marca">
@@ -519,22 +500,22 @@ section.band{padding-block:var(--section-y)}
 <path fill-rule="nonzero" fill="#232F60" fill-opacity="1" d="M 4570.433594 2897.789062 C 4602.070312 2904.707031 4616.664062 2916.238281 4616.664062 2938.167969 C 4616.664062 2962.679688 4596.386719 2978.511719 4568.195312 2978.511719 C 4545.679688 2978.511719 4527.230469 2971.007812 4510.191406 2955.792969 L 4520.136719 2944.019531 C 4534.941406 2957.410156 4549.125 2964.125 4568.816406 2964.125 C 4587.886719 2964.125 4600.453125 2954.175781 4600.453125 2939.785156 C 4600.453125 2926.394531 4593.359375 2918.890625 4563.546875 2912.589844 C 4530.878906 2905.5 4515.871094 2894.964844 4515.871094 2871.453125 C 4515.871094 2848.730469 4535.5625 2832.519531 4562.515625 2832.519531 C 4583.203125 2832.519531 4598.007812 2838.371094 4612.394531 2849.9375 L 4603.066406 2862.332031 C 4589.882812 2851.554688 4576.730469 2846.90625 4562.101562 2846.90625 C 4543.648438 2846.90625 4531.914062 2857.027344 4531.914062 2870.007812 C 4531.914062 2883.605469 4539.210938 2891.109375 4570.433594 2897.789062 "/>
 <path fill-rule="nonzero" fill="#232F60" fill-opacity="1" d="M 4742.398438 2005.214844 L 4721.789062 2005.214844 L 4721.789062 2029.125 L 4741.535156 2029.125 C 4751.058594 2029.125 4758.339844 2024.96875 4758.339844 2016.824219 C 4758.339844 2009.554688 4752.273438 2005.214844 4742.398438 2005.214844 M 4748.796875 2034.84375 L 4769.945312 2061.523438 L 4760.234375 2061.523438 L 4740.136719 2036.058594 L 4721.789062 2036.058594 L 4721.789062 2061.523438 L 4714.324219 2061.523438 L 4714.324219 1998.117188 L 4742.75 1998.117188 C 4756.261719 1998.117188 4766.136719 2005.214844 4766.136719 2016.476562 C 4766.136719 2026.875 4759.023438 2032.933594 4748.796875 2034.84375 M 4738.574219 1973.6875 C 4705.664062 1973.6875 4680.894531 1999.84375 4680.894531 2031.726562 C 4680.894531 2063.59375 4705.496094 2089.40625 4738.246094 2089.40625 C 4771.15625 2089.40625 4795.925781 2063.261719 4795.925781 2031.378906 C 4795.925781 1999.503906 4771.324219 1973.6875 4738.574219 1973.6875 M 4738.246094 2094.261719 C 4703.070312 2094.261719 4675.691406 2066.019531 4675.691406 2031.726562 C 4675.691406 1997.417969 4703.417969 1968.832031 4738.574219 1968.832031 C 4773.75 1968.832031 4801.128906 1997.078125 4801.128906 2031.378906 C 4801.128906 2065.671875 4773.402344 2094.261719 4738.246094 2094.261719 "/>
 </svg></a>
-        <p><span data-l="es">Arándanos en Colombia, con genética de Mountain Blue Orchards desde 2017.</span></p>
+        <p>Arándanos en Colombia, con genética de Mountain Blue Orchards desde 2017.</p>
       </div>
       <nav aria-label="Secciones">
-        <p class="label"><span data-l="es">Secciones</span></p>
+        <p class="label">Secciones</p>
         <ul>
-          <li><a href="#fruta"><span data-l="es">La fruta</span></a></li>
-          <li><a href="#origen"><span data-l="es">Origen</span></a></li>
-          <li><a href="#empresas"><span data-l="es">Para empresas</span></a></li>
-          <li><a href="#casa"><span data-l="es">Para tu casa</span></a></li>
+          <li><a href="#fruta">La fruta</a></li>
+          <li><a href="#origen">Origen</a></li>
+          <li><a href="#empresas">Para empresas</a></li>
+          <li><a href="#casa">Para tu casa</a></li>
         </ul>
       </nav>
       <div>
-        <p class="label"><span data-l="es">Contacto</span></p>
+        <p class="label">Contacto</p>
         <ul>
           <li><a href="mailto:info@sabanablues.com">info@sabanablues.com</a></li>
-          <li><a href="https://www.linkedin.com/company/sabana-blues" target="_blank" rel="noopener">LinkedIn<span class="sr"> <span data-l="es">se abre en otra pestaña</span></span></a></li>
+          <li><a href="https://www.linkedin.com/company/sabana-blues" target="_blank" rel="noopener">LinkedIn<span class="sr"> se abre en otra pestaña</span></a></li>
         </ul>
         <div class="langs">
           <a class="lang-b" href="/" hreflang="es" lang="es" aria-label="Cambiar idioma a español" aria-current="page">ES</a>
@@ -544,8 +525,8 @@ section.band{padding-block:var(--section-y)}
       </div>
     </div>
     <div class="pie-base">
-      <p class="legal"><span>© 2026</span><span>Sabana Blues®</span><span><span data-l="es">Todos los derechos reservados</span></span></p>
-      <a href="#inicio"><span data-l="es">Volver arriba</span></a>
+      <p class="legal"><span>© 2026</span><span>Sabana Blues®</span><span>Todos los derechos reservados</span></p>
+      <a href="#inicio">Volver arriba</a>
     </div>
   </div>
 </footer>
@@ -553,6 +534,7 @@ section.band{padding-block:var(--section-y)}
 <script>
 (function(){
   var WA_NUMBER = "573108071143";
+  // El mensaje de WhatsApp lleva un espacio al final, para que la persona escriba ahí su barrio.
   var MSG = {es:"Hola, quiero pedir arándanos a domicilio. Estoy en ", en:"Hi, I'd like a blueberry delivery. I'm in "};
   var SUBJ = {es:"Contacto desde sabanablues.com", en:"Enquiry from sabanablues.com"};
   // El idioma lo fija cada dirección: / es español y /en/ es inglés.
@@ -578,7 +560,9 @@ section.band{padding-block:var(--section-y)}
     mb.querySelector(".m-abrir").hidden = open;
     mb.querySelector(".m-cerrar").hidden = !open;
   }
-  mb.addEventListener("click", function(){ menu(mb.getAttribute("aria-expanded") !== "true"); });
+  // Al abrir, el foco va al primer enlace del menú: así el siguiente Tab recorre el menú en orden.
+  function abrir(){ menu(true); var a = document.getElementById("menu").getElementsByTagName("a")[0]; if (a) a.focus(); }
+  mb.addEventListener("click", function(){ if (mb.getAttribute("aria-expanded") === "true") menu(false); else abrir(); });
   document.querySelectorAll("#menu a").forEach(function(a){ a.addEventListener("click", function(){ menu(false); }); });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && bar.classList.contains("abierto")) { menu(false); mb.focus(); } });
   matchMedia("(min-width: 1040px)").addEventListener("change", function(m){ if (m.matches) menu(false); });

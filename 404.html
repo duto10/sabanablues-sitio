@@ -5,37 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Esta página no existe · Sabana Blues</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#00205C">
+<meta name="theme-color" content="#FAF7F0">
 <meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap">
 <style>
-/* Sabana Blues · página de error. Mismos tokens que src/template.html */
-:root{color-scheme:light;--sb-navy:#00205C;--sb-navy-deep:#001948;--sb-navy-70:#4D638D;--sb-aqua:#84DADE;--sb-sand:#F0D283;--sb-paper:#FAF7F0;--sb-white:#FFFFFF;
-  --gutter:clamp(1rem,.5rem + 2.5vw,2rem);--wrap:72rem;--bar-h:68px}
-@media (min-width:1040px){:root{--bar-h:88px}}
+/* Sabana Blues · página de error, versión minimalista. Mismos tokens que src/template.html */
+:root{color-scheme:light;--sb-navy:#00205C;--sb-navy-deep:#001948;--sb-navy-70:#4D638D;--sb-paper:#FAF7F0;--sb-white:#FFFFFF;--line:rgba(0,32,92,.16);
+  --gutter:clamp(1.25rem,.6rem + 2.6vw,2.5rem);--wrap:74rem;--bar-h:64px}
+@media (min-width:1040px){:root{--bar-h:80px}}
 *,*::before,*::after{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;background:var(--sb-paper);color:var(--sb-navy);font:400 1.0625rem/1.6 'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100svh;display:flex;flex-direction:column}
-:focus-visible{outline:3px solid var(--sb-navy);outline-offset:3px;border-radius:4px}
+body{margin:0;background:var(--sb-paper);color:var(--sb-navy);font:400 1.0625rem/1.65 'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100svh;display:flex;flex-direction:column}
+:focus-visible{outline:2px solid var(--sb-navy);outline-offset:3px;border-radius:4px}
 .wrap{max-width:calc(var(--wrap) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter);width:100%}
-.bar{background:var(--sb-navy)}
+.bar{border-bottom:1px solid var(--line)}
 .bar .wrap{height:var(--bar-h);display:flex;align-items:center}
-.bar :focus-visible{outline-color:var(--sb-sand)}
 .logo{display:block;width:120px;aspect-ratio:4501.1/1653.1;overflow:hidden;line-height:0}
-@media (min-width:1040px){.logo{width:140px}}
-.logo svg{display:block;width:100%;height:auto}.logo svg path{fill:var(--sb-white)}
+@media (min-width:1040px){.logo{width:136px}}
+.logo svg{display:block;width:100%;height:auto}.logo svg path{fill:var(--sb-navy)}
 .logo svg path:nth-child(n+12):nth-child(-n+29){display:none}
 main{flex:1;display:flex;align-items:center}
-main .wrap{padding-block:clamp(3.5rem,2rem + 5.5vw,7rem)}
-h1{margin:0;font-size:clamp(2rem,1.3rem + 2.4vw,3.25rem);line-height:1.08;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
-p{margin:1rem 0 0;max-width:40ch;text-wrap:balance;text-wrap:pretty;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.55;color:var(--sb-navy-70)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:1.75rem;padding:.8rem 1.5rem;border-radius:999px;background:var(--sb-navy);color:var(--sb-white);font:600 1rem/1.15 'Montserrat',system-ui,sans-serif;text-decoration:none;transition:background-color 180ms}
+main .wrap{padding-block:clamp(4.5rem,2.5rem + 7vw,9rem)}
+h1{margin:0;max-width:15ch;font-size:clamp(2.25rem,1.15rem + 4.1vw,4.75rem);line-height:1.04;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+p{margin:1.5rem 0 0;max-width:44ch;text-wrap:balance;text-wrap:pretty;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.55;color:var(--sb-navy)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:2.25rem;padding:.8rem 1.6rem;border-radius:999px;background:var(--sb-navy);color:var(--sb-white);font:600 1rem/1.15 'Montserrat',system-ui,sans-serif;text-decoration:none;transition:background-color 180ms}
 .btn:hover{background:var(--sb-navy-deep)}
-.banda{height:clamp(2.75rem,2rem + 2.5vw,4.5rem);background:var(--sb-aqua)}
+.pie{border-top:1px solid var(--line);height:clamp(3rem,2rem + 3vw,5rem)}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
 </style>
 </head>
@@ -74,16 +73,17 @@ p{margin:1rem 0 0;max-width:40ch;text-wrap:balance;text-wrap:pretty;font-size:cl
 <path fill-rule="nonzero" fill="#232F60" fill-opacity="1" d="M 4742.398438 2005.214844 L 4721.789062 2005.214844 L 4721.789062 2029.125 L 4741.535156 2029.125 C 4751.058594 2029.125 4758.339844 2024.96875 4758.339844 2016.824219 C 4758.339844 2009.554688 4752.273438 2005.214844 4742.398438 2005.214844 M 4748.796875 2034.84375 L 4769.945312 2061.523438 L 4760.234375 2061.523438 L 4740.136719 2036.058594 L 4721.789062 2036.058594 L 4721.789062 2061.523438 L 4714.324219 2061.523438 L 4714.324219 1998.117188 L 4742.75 1998.117188 C 4756.261719 1998.117188 4766.136719 2005.214844 4766.136719 2016.476562 C 4766.136719 2026.875 4759.023438 2032.933594 4748.796875 2034.84375 M 4738.574219 1973.6875 C 4705.664062 1973.6875 4680.894531 1999.84375 4680.894531 2031.726562 C 4680.894531 2063.59375 4705.496094 2089.40625 4738.246094 2089.40625 C 4771.15625 2089.40625 4795.925781 2063.261719 4795.925781 2031.378906 C 4795.925781 1999.503906 4771.324219 1973.6875 4738.574219 1973.6875 M 4738.246094 2094.261719 C 4703.070312 2094.261719 4675.691406 2066.019531 4675.691406 2031.726562 C 4675.691406 1997.417969 4703.417969 1968.832031 4738.574219 1968.832031 C 4773.75 1968.832031 4801.128906 1997.078125 4801.128906 2031.378906 C 4801.128906 2065.671875 4773.402344 2094.261719 4738.246094 2094.261719 "/>
 </svg></a></div></header>
 <main><div class="wrap">
-  <h1><span data-l="es">Esta página no existe</span><span data-l="en" hidden>This page doesn't exist</span></h1>
-  <p><span data-l="es">Todo lo que publicamos está en la página de inicio.</span><span data-l="en" hidden>Everything we publish is on the home page.</span></p>
-  <a class="btn" id="volver" href="/"><span data-l="es">Volver al inicio</span><span data-l="en" hidden>Back to home</span></a>
+  <h1 data-en="This page doesn't exist">Esta página no existe</h1>
+  <p data-en="Everything we publish is on the home page.">Todo lo que publicamos está en la página de inicio.</p>
+  <a class="btn" id="volver" href="/" data-en="Back to home">Volver al inicio</a>
 </div></main>
-<div class="banda" aria-hidden="true"></div>
+<div class="wrap" aria-hidden="true"><div class="pie"></div></div>
 <script>
 (function(){
   // Español por defecto; inglés solo si la dirección empieza por /en/
   var l=/^\/en(\/|$)/.test(location.pathname)?"en":"es";
-  document.querySelectorAll("[data-l]").forEach(function(el){el.hidden=el.getAttribute("data-l")!==l;});
+  // El texto en inglés va guardado en data-en (no se lee ni se indexa) y solo se pone en /en/.
+  if(l==="en")document.querySelectorAll("[data-en]").forEach(function(el){el.textContent=el.getAttribute("data-en");});
   document.documentElement.lang=l;
   if(l==="en"){document.title="This page doesn't exist · Sabana Blues";document.getElementById("volver").href="/en/";document.querySelector(".logo").href="/en/";}
   document.querySelectorAll("[data-aria-"+l+"]").forEach(function(el){el.setAttribute("aria-label",el.getAttribute("data-aria-"+l));});
