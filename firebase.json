@@ -2,7 +2,7 @@
   "hosting": {
     "site": "sabanapp-landing",
     "public": ".",
-    "ignore": ["firebase.json", ".firebaserc", "**/.*", "CNAME", "*.log"],
+    "ignore": ["firebase.json", ".firebaserc", "**/.*", "**/.*/**", "CNAME", "*.log"],
     "cleanUrls": true,
     "trailingSlash": true,
     "headers": [
