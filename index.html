@@ -289,12 +289,17 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
 .nota h3{margin-top:.4rem}
 .nota-cuerpo > p{margin-top:.35rem;color:var(--muted)}
 .nota-enlace{display:inline-flex;align-items:center;min-height:44px;margin-top:.25rem;font-weight:600}
+/* Foto de la noticia, si la trae: a todo el ancho del texto en celular; miniatura a la derecha del texto en computador */
+.nota-foto{display:block;width:100%;height:auto;margin-top:1rem;border-radius:var(--r-photo)}
 @media (min-width:860px){
   /* La fecha en la misma columna que los años de la historia; la tercera columna es para el enlace, si la noticia lo trae */
   .nota{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr) auto;column-gap:clamp(1.75rem,3vw,3rem);align-items:baseline;padding-block:1.75rem 2rem}
   .nota-fecha{padding-top:.15rem}
   .nota h3{margin-top:0}
   .nota-enlace{margin-top:0;align-self:center;white-space:nowrap}
+  .con-foto{display:grid;grid-template-columns:minmax(0,1fr) 12rem;column-gap:clamp(1.5rem,2.5vw,2.25rem);align-content:start}
+  .con-foto > :not(.nota-foto){grid-column:1}
+  .con-foto .nota-foto{grid-column:2;grid-row:1 / span 2;margin-top:0;align-self:start}
 }
 
 /* ---------- Para empresas ---------- */
@@ -574,9 +579,11 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
       <ul class="notas">
         <li class="nota">
           <p class="nota-fecha">Septiembre de 2026</p>
-          <div class="nota-cuerpo">
+          <div class="nota-cuerpo con-foto">
             <h3>Presentamos Sabana Blues en Kunming, China</h3>
             <p>Fue el 19 de septiembre de 2026, en la conferencia del arándano de Yunnan, durante la Yunnan Berry Expo.</p>
+            <img class="nota-foto" src="/img/noticia-yunnan.jpg" sizes="(max-width: 859.98px) 92vw, 12rem" width="1160" height="967" loading="lazy" decoding="async"
+              alt="Con el micrófono en la mano, presentamos Sabana Blues en el escenario de la Yunnan Berry Expo, en Kunming (China), en septiembre de 2026.">
           </div>
           <a class="nota-enlace" href="https://www.ifexflowerexpo.com/en-gb/co-located/international-berry-expo.html" target="_blank" rel="noopener">Ver la Yunnan Berry Expo<span class="sr"> se abre en otra pestaña</span></a>
         </li>
@@ -596,7 +603,7 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
       <p class="label">Para empresas</p>
       <h2 id="h-empresas">Si es por negocios, escríbenos</h2>
       <div class="publicos">
-        <div><h3>Supermercados y clientes institucionales</h3><p>Llevamos la fruta a supermercados en Colombia. Viene en dos presentaciones, Jumbo 250 g y Extra 500 g.</p></div>
+        <div><h3>Supermercados y clientes institucionales</h3><p>Nuestros arándanos se venden en Carulla y en Éxito. Llevamos la fruta a supermercados en Colombia. Viene en dos presentaciones, Jumbo 250 g y Extra 500 g.</p></div>
         <div><h3>Socios e inversionistas</h3><p>Somos una operación integrada, de la planta al empaque, y nos proyectamos hacia la exportación. El detalle lo damos por correo.</p></div>
       </div>
       <div class="contacto">
