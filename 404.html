@@ -16,18 +16,18 @@
 <style>
 /* Sabana Blues · página de error, versión minimalista. Mismos tokens que src/template.html */
 :root{color-scheme:light;--sb-navy:#00205C;--sb-navy-deep:#001948;--sb-navy-70:#4D638D;--sb-paper:#FAF7F0;--sb-white:#FFFFFF;--line:rgba(0,32,92,.16);
-  --gutter:clamp(1.25rem,.6rem + 2.6vw,2.5rem);--wrap:74rem;--bar-h:64px}
-@media (min-width:1040px){:root{--bar-h:80px}}
+  --gutter:clamp(1.25rem,.6rem + 2.6vw,2.5rem);--wrap:74rem}
 *,*::before,*::after{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--sb-paper);color:var(--sb-navy);font:400 1.0625rem/1.65 'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100svh;display:flex;flex-direction:column}
 :focus-visible{outline:2px solid var(--sb-navy);outline-offset:3px;border-radius:4px}
 .wrap{max-width:calc(var(--wrap) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter);width:100%}
+/* Logo completo, con descriptor y ®: 220 a 248 px (comité de marca, delegado por Andrés, 13 nov 2026).
+   La barra no es fija: la página es corta. Reserva del 10 % del ancho del logo arriba y abajo. */
 .bar{border-bottom:1px solid var(--line)}
-.bar .wrap{height:var(--bar-h);display:flex;align-items:center}
-.logo{display:block;width:120px;aspect-ratio:4501.1/1653.1;overflow:hidden;line-height:0}
-@media (min-width:1040px){.logo{width:136px}}
+.bar .wrap{display:flex;align-items:center;padding-block:calc(var(--logo-w) * .1)}
+.bar{--logo-w:clamp(13.75rem, 11rem + 5vw, 15.5rem)}
+.logo{display:block;flex:none;width:var(--logo-w);line-height:0}
 .logo svg{display:block;width:100%;height:auto}.logo svg path{fill:var(--sb-navy)}
-.logo svg path:nth-child(n+12):nth-child(-n+29){display:none}
 main{flex:1;display:flex;align-items:center}
 main .wrap{padding-block:clamp(4.5rem,2.5rem + 7vw,9rem)}
 h1{margin:0;max-width:15ch;font-size:clamp(2.25rem,1.15rem + 4.1vw,4.75rem);line-height:1.04;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
