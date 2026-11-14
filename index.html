@@ -124,6 +124,7 @@ a.lang-b{display:inline-flex;align-items:center;justify-content:center;text-deco
 .lang-b[aria-current="page"]{color:var(--fg);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.55em}
 .lang-b:hover{color:var(--fg)}
 .langs .sep{width:1px;height:14px;background:var(--line)}
+.nav .langs{display:none}
 .bar .btn-bar{min-height:44px;padding:.6rem 1.15rem;font-size:.9375rem;flex:none;margin-left:.5rem}
 .menu-b{display:none;min-height:44px;min-width:44px;padding:0 1.1rem;border:0;border-radius:var(--r-pill);background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--sb-navy);font:600 .9375rem/1 var(--font-sans);cursor:pointer;flex:none}
 
@@ -139,6 +140,12 @@ a.lang-b{display:inline-flex;align-items:center;justify-content:center;text-deco
   .nav-cta .btn{width:100%}
 }
 @media (max-width:599.98px){.bar .btn-bar{display:none}}
+/* Por debajo de 360 px (iPhone SE y mini con zoom de pantalla) no caben en la barra el logo, ES | EN y «Menú»: ES | EN pasa al menú */
+@media (max-width:359.98px){
+  .bar-in > .langs{display:none}
+  .menu-b{margin-left:auto}
+  .nav .langs{display:flex;margin:1rem 0 0 -11.5px}
+}
 @media (min-width:600px) and (max-width:1039.98px){.nav-cta{display:none}}
 /* Hasta 820 px el botón de pedir baja a una franja fija abajo, siempre a la vista.
    Es el mismo enlace de la barra (no se duplica); la franja de papel va detrás y el pie se alarga lo mismo para no quedar tapado. */
@@ -321,6 +328,11 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
         <li><a href="#empresas">Para empresas</a></li>
         <li><a href="#casa">Para tu casa</a></li>
       </ul>
+      <div class="langs">
+        <a class="lang-b" href="/" hreflang="es" lang="es" aria-label="Cambiar idioma a español" aria-current="page">ES</a>
+        <span class="sep" aria-hidden="true"></span>
+        <a class="lang-b" href="/en/" hreflang="en" lang="en" aria-label="Change language to English">EN</a>
+      </div>
       <div class="nav-cta"><a class="btn btn-accent" href="#casa">Pedir a domicilio</a></div>
     </nav>
     <div class="langs">
