@@ -116,9 +116,10 @@ a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
 .nav ul{display:flex;align-items:center;gap:4px}
 .nav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 .8rem;font-weight:500;font-size:.9375rem;text-decoration:none;border-radius:var(--r-pill)}
 .nav ul a:hover{text-decoration:underline;text-underline-offset:.5em}
-/* Con cinco enlaces, el menú va en una fila desde 1120 px; entre 1120 y 1239 px los enlaces se achican un poco para no partirse ni pegarse al logo */
+/* Con seis enlaces (cinco si el formulario de Contacto no está activo), el menú va en una fila desde 1120 px;
+   entre 1120 y 1239 px los enlaces se achican un poco para no partirse ni pegarse al logo */
 .nav ul a{white-space:nowrap}
-@media (min-width:1120px) and (max-width:1239.98px){.nav ul a{padding:0 .55rem;font-size:.875rem}.bar .btn-bar{margin-left:.25rem}}
+@media (min-width:1120px) and (max-width:1239.98px){.nav ul{gap:2px}.nav ul a{padding:0 .45rem;font-size:.875rem}.bar .btn-bar{margin-left:.25rem}}
 .nav-cta{display:none}
 .langs{display:flex;align-items:center;gap:2px;flex:none}
 .lang-b{min-width:44px;min-height:44px;padding:0 .4rem;color:var(--muted);font:600 .8125rem/1 var(--font-sans);letter-spacing:.12em;border-radius:var(--r-pill)}
@@ -223,8 +224,36 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
 @media (max-width:419.98px){.rasgos{column-gap:1.25rem}}
 
 /* ---------- Origen: una foto ancha y los cuatro pasos en columnas ---------- */
-.origen-foto{margin-top:clamp(2.5rem,4vw,4rem)}
-.origen-foto img{width:100%;aspect-ratio:21/9;object-fit:cover;object-position:50% 78%;border-radius:var(--r-photo)}
+/* Carrusel del proceso, en la foto ancha: del vivero a la fruta. Las diapositivas van en una fila y se ve una.
+   El marco de la foto tiene proporción fija (16:9; 4:3 en celular): la página no salta al cambiar de foto ni mientras carga.
+   Sin JavaScript se pasa de foto deslizando la fila; con JavaScript, con las flechas, el teclado (← →) o el dedo. */
+.carrusel{position:relative;margin-top:clamp(2.5rem,4vw,4rem);--car-ar:16/9;--car-gap:1.5rem}
+.car-ventana{position:relative;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.car-ventana::-webkit-scrollbar{display:none}
+.carrusel.listo .car-ventana{overflow:hidden}
+.car-pista{display:flex;gap:var(--car-gap);touch-action:pan-y}
+.carrusel.listo .car-pista{transform:translateX(calc(var(--car-i,0) * (-100% - var(--car-gap)) + var(--car-dx,0px)));transition:transform 560ms var(--ease)}
+.carrusel.listo .car-pista.arrastrando{transition:none}
+.car-dia{flex:0 0 100%;min-width:0;scroll-snap-align:start}
+.car-foto{position:relative;overflow:hidden;aspect-ratio:var(--car-ar);border-radius:var(--r-photo);background:var(--sb-navy-12)}
+.car-foto img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;-webkit-user-select:none;user-select:none}
+.car-leyenda{margin-top:1rem;padding-right:7rem;max-width:none;font-weight:600;line-height:1.45}
+/* Flechas sobre la foto, a media altura: su caja tiene la misma proporción de la foto. El contador va justo debajo, a la derecha */
+.car-flechas{display:none}
+.carrusel.listo .car-flechas{position:absolute;left:0;right:0;top:0;aspect-ratio:var(--car-ar);display:flex;align-items:center;justify-content:space-between;padding-inline:clamp(.75rem,2vw,1.5rem);pointer-events:none}
+.car-flecha{pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;flex:none;width:56px;height:56px;padding:0;border:0;border-radius:var(--r-pill);background:rgba(250,247,240,.94);color:var(--sb-navy);cursor:pointer;transition:background-color var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.car-flecha:hover{background:var(--sb-white)}
+.car-flecha svg{width:26px;height:26px}
+.car-flecha[aria-disabled="true"]{opacity:.4;cursor:default}
+.car-flecha:focus-visible{outline:3px solid var(--sb-navy);outline-offset:3px}
+.car-cuenta{position:absolute;right:0;top:100%;margin-top:1rem;max-width:none;font-size:var(--fs-small);font-weight:600;line-height:1.65;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.carrusel.una .car-flecha,.carrusel.una .car-cuenta{display:none}
+.carrusel.una .car-leyenda{padding-right:0}
+/* Profundidad al pasar el mouse: la foto se acerca un poco y se mueve apenas con el cursor. Solo con mouse y sin «reducir movimiento» */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .car-foto img{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .car-ventana:hover .car-foto img{transform:translate3d(var(--car-mx,0px),var(--car-my,0px),0) scale(1.045)}
+}
 .cadena{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto;gap:0 clamp(1.5rem,2.6vw,2.5rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
 .ficha{display:grid;grid-row:span 2;grid-template-rows:subgrid;align-content:start}
 .ficha p{margin-top:.5rem;max-width:none;color:var(--muted)}
@@ -236,7 +265,10 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
 }
 @media (max-width:859.98px){.red{grid-template-columns:1fr}}
 @media (max-width:599.98px){
-  .origen-foto img{aspect-ratio:4/3;object-position:50% 85%}
+  .carrusel{--car-ar:4/3;--car-gap:1rem}
+  .car-flecha{width:44px;height:44px}
+  .car-flecha svg{width:22px;height:22px}
+  .car-leyenda{padding-right:5.5rem}
   .cadena{grid-template-columns:1fr;row-gap:1.75rem}
   .red p{font-size:1.0625rem}
 }
@@ -252,6 +284,7 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
 .hito .anio{max-width:none;font-size:var(--fs-anio);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .hito h3{margin-top:.75rem}
 .hito .cuerpo p{margin-top:.4rem;color:var(--muted)}
+.hito-enlace{display:inline-flex;align-items:center;min-height:44px;margin-top:.5rem;font-weight:600}
 .hito-foto{margin-top:1.5rem}
 .hito-foto img{width:100%;border-radius:var(--r-photo);background:var(--sb-navy-12)}
 /* Foto horizontal: se ve completa, sin recorte. --ar (ancho/alto del archivo) reserva su espacio antes de que cargue */
@@ -329,6 +362,45 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
 .pedido a:not(.btn){font-weight:600}
 @media (max-width:719.98px){.pedido{grid-template-columns:1fr}.pedido .btn{justify-self:start}}
 @media (max-width:479.98px){.packs{gap:.875rem}.packs img{aspect-ratio:1/1}.packs figcaption{flex-wrap:wrap;gap:0 .5rem;margin-top:.6rem}.pedido .btn{width:100%}}
+
+/* ---------- Contacto: el formulario, al final de la página. Sale solo cuando tiene la dirección de Google ---------- */
+.escribenos{--err:#B42318}
+.escribenos-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem clamp(2rem,6vw,6rem);align-items:start}
+.escribenos-cab .lede{margin-top:1.25rem;max-width:34ch}
+.escribenos-caja{min-width:0;max-width:42rem}
+@media (max-width:959.98px){.escribenos-grid{grid-template-columns:1fr}.escribenos-cab .lede{max-width:var(--measure)}}
+.campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+.campo{min-width:0;margin:0;padding:0;border:0}
+.campo.ancho{grid-column:1/-1}
+.campo > label:not(.casilla){display:block;margin-bottom:.5rem;font-size:.9375rem;font-weight:600;line-height:1.4}
+.campo .caja{display:block;width:100%;min-height:48px;padding:.7rem 1rem;margin:0;border:1.5px solid var(--sb-navy-70);border-radius:12px;background-color:var(--sb-white);color:var(--fg);font:400 1rem/1.5 var(--font-sans);transition:border-color var(--dur) var(--ease)}
+.campo textarea.caja{min-height:10rem;resize:vertical}
+/* La lista de asuntos: la flecha es la del ícono de Lucide (chevron-down), en navy */
+.campo select.caja{-webkit-appearance:none;appearance:none;padding-right:2.75rem;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300205C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center;background-size:1.125rem}
+.campo select.caja:invalid{color:var(--muted)}
+.campo select.caja option{color:var(--fg)}
+.campo .caja:hover{border-color:var(--sb-navy)}
+.campo .caja:focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-color:var(--sb-navy);border-radius:12px}
+.campo [aria-invalid="true"].caja{border-color:var(--err);border-width:2px}
+.campo > .casilla{display:flex;align-items:flex-start;gap:.875rem;margin:0;font-size:1rem;line-height:1.5;cursor:pointer}
+.casilla input{flex:none;width:1.25rem;height:1.25rem;margin:.15rem 0 0;accent-color:var(--sb-navy);cursor:pointer}
+.casilla a{font-weight:600}
+.campo.invalido .casilla input{outline:2px solid var(--err);outline-offset:2px}
+.error{margin-top:.45rem;color:var(--err);font-size:.9375rem;font-weight:600;line-height:1.45}
+.trampa{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+.enviar{margin-top:2rem}
+.enviar .btn{min-width:10rem}
+.enviar .btn[aria-disabled="true"]{opacity:.6;cursor:progress}
+.aviso-form{margin-top:1.5rem;padding:1.25rem 1.5rem;border:1px solid var(--line);border-radius:var(--r-photo);background:var(--sb-white);max-width:var(--measure)}
+.aviso-form.mal{border-color:var(--err);box-shadow:inset 4px 0 0 var(--err)}
+.aviso-form.bien{margin-top:0}
+.aviso-form .t{font-size:var(--fs-h3);font-weight:700;line-height:1.3}
+.aviso-form .t + p{margin-top:.35rem;color:var(--muted)}
+.aviso-form a{font-weight:600}
+@media (max-width:639.98px){.campos{grid-template-columns:1fr;gap:1.25rem}}
+@media (max-width:479.98px){.enviar .btn{width:100%}}
 
 /* ---------- Pie ---------- */
 .pie > .wrap{padding-block:clamp(3.5rem,6vw,5.5rem) 1.5rem;border-top:1px solid var(--line)}
@@ -422,7 +494,7 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
       <div class="hero-in">
         <h1 id="h-inicio">Our blueberries start with the genetics</h1>
         <p class="lede">We've worked with Mountain Blue Orchards genetics in Colombia since 2017. Our farms and partner growers plant Eureka varieties, and we pack at origin.</p>
-        <a class="btn btn-primary" href="#origen">See how we grow</a>
+        <a class="btn btn-primary" href="#origen">How we operate</a>
       </div>
       <figure class="hero-foto">
         <img src="/img/hero-arcabuco-naves.jpg" srcset="/img/hero-arcabuco-naves-1200.jpg 1200w, /img/hero-arcabuco-naves.jpg 2200w" sizes="(max-width: 699.98px) 150vw, (max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" fetchpriority="high" decoding="async"
@@ -434,7 +506,7 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
   <div class="hechos">
     <div class="wrap">
       <ul>
-        <li class="hecho"><span class="v">2014</span> <span class="t">We started with the nursery</span></li>
+        <li class="hecho"><span class="v">52</span> <span class="t">Producing 52 weeks a year</span></li>
         <li class="hecho"><span class="v">2018</span> <span class="t">We arrived in Arcabuco, Boyacá</span></li>
         <li class="hecho"><span class="v">2,530 m</span> <span class="t">Approximate altitude of the Arcabuco farm</span></li>
       </ul>
@@ -458,8 +530,8 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
         <dl class="rasgos">
           <div><dt>Large</dt><dd>You can see it through the punnet.</dd></div>
           <div><dt>Firm</dt><dd>You feel it with a light squeeze.</dd></div>
-          <div><dt>Crunchy</dt><dd>You hear it when you bite.</dd></div>
-          <div><dt>Sweet</dt><dd>It's the taste that stays.</dd></div>
+          <div><dt>Crunchy</dt><dd>You hear the crunch when you bite.</dd></div>
+          <div><dt>Sweet</dt><dd>The ideal balance.</dd></div>
         </dl>
       </div>
     </div>
@@ -471,10 +543,28 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
         <h2 id="h-origen">From plant to pack</h2>
         <p class="lede">Every plant, on our own farms and on our partner growers', comes from our nursery. We are vertically integrated.</p>
       </div>
-      <figure class="origen-foto">
-        <img src="/img/vivero-engorde.jpg" width="1000" height="667" loading="lazy" decoding="async"
-          alt="Young blueberry plants inside the nursery">
-      </figure>
+      <!-- El carrusel del proceso (fotos y leyendas del archivo de textos): lo arma src/build.py, carrusel_completo -->
+      <div class="carrusel" id="carrusel-origen" role="region" aria-roledescription="carousel" aria-label="Photos of the process, from nursery to fruit" data-contador="{n} of {total}">
+  <div class="car-ventana">
+    <ul class="car-pista" id="car-pista-origen">
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="1 of 9"><div class="car-foto"><img src="/img/vivero-engorde-camas-1200.jpg" srcset="/img/vivero-engorde-camas-1200.jpg 1200w, /img/vivero-engorde-camas.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1467" loading="lazy" decoding="async" draggable="false" alt="Young blueberry plants in the nursery beds"></div><p class="car-leyenda">It all starts in the nursery</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="2 of 9"><div class="car-foto"><img src="/img/cultivo-joven-red-tunel-ancho-1200.jpg" srcset="/img/cultivo-joven-red-tunel-ancho-1200.jpg 1200w, /img/cultivo-joven-red-tunel-ancho.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="991" loading="lazy" decoding="async" draggable="false" alt="Young blueberry crop in grow bags under a tunnel, on one of our network&#x27;s farms"></div><p class="car-leyenda">Nursery plants, now on the farm</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="3 of 9"><div class="car-foto"><img src="/img/cultivo-joven-hojas-nuevas-1200.jpg" srcset="/img/cultivo-joven-hojas-nuevas-1200.jpg 1200w, /img/cultivo-joven-hojas-nuevas.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" loading="lazy" decoding="async" draggable="false" alt="Young blueberry plant with new leaves, in a grow bag inside the tunnel"></div><p class="car-leyenda">New growth under the tunnel</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="4 of 9"><div class="car-foto"><img src="/img/cultivo-tres-matas-bolsa-1200.jpg" srcset="/img/cultivo-tres-matas-bolsa-1200.jpg 1200w, /img/cultivo-tres-matas-bolsa.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" loading="lazy" decoding="async" draggable="false" alt="Three blueberry plants in grow bags, in a row under the tunnel in Arcabuco, Boyacá"></div><p class="car-leyenda">Every plant on drip irrigation</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="5 of 9"><div class="car-foto"><img src="/img/flor-campanitas-fondo-oscuro-1200.jpg" srcset="/img/flor-campanitas-fondo-oscuro-1200.jpg 1200w, /img/flor-campanitas-fondo-oscuro.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" loading="lazy" decoding="async" draggable="false" alt="White bell-shaped blueberry flowers against a dark background"></div><p class="car-leyenda">First comes the flower</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="6 of 9"><div class="car-foto"><img src="/img/flor-y-cuaje-rama-1200.jpg" srcset="/img/flor-y-cuaje-rama-1200.jpg 1200w, /img/flor-y-cuaje-rama.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" loading="lazy" decoding="async" draggable="false" alt="Blueberry branch with flowers and newly set fruit"></div><p class="car-leyenda">Flowers turn into fruit</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="7 of 9"><div class="car-foto"><img src="/img/fruta-racimo-maduracion-1200.jpg" srcset="/img/fruta-racimo-maduracion-1200.jpg 1200w, /img/fruta-racimo-maduracion.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" loading="lazy" decoding="async" draggable="false" alt="Large cluster of ripening blueberries, green and pink"></div><p class="car-leyenda">Ripening on the plant</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="8 of 9"><div class="car-foto"><img src="/img/fruta-azul-pruina-racimo-maduro-1200.jpg" srcset="/img/fruta-azul-pruina-racimo-maduro-1200.jpg 1200w, /img/fruta-azul-pruina-racimo-maduro.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" loading="lazy" decoding="async" draggable="false" alt="Cluster of blue blueberries with their bloom, on the plant"></div><p class="car-leyenda">Clusters ready to pick</p></li>
+<li class="car-dia" role="group" aria-roledescription="photo" aria-label="9 of 9"><div class="car-foto"><img src="/img/cultivo-hileras-flor-fruta-1200.jpg" srcset="/img/cultivo-hileras-flor-fruta-1200.jpg 1200w, /img/cultivo-hileras-flor-fruta.jpg 2200w" sizes="(max-width: 1263.98px) 100vw, 1184px" width="2200" height="1457" loading="lazy" decoding="async" draggable="false" alt="Rows of blueberry plants in grow bags, with flowers and green fruit, and a grass aisle under the tunnel"></div><p class="car-leyenda">Rows in flower and fruit</p></li>
+    </ul>
+    <div class="car-flechas">
+      <button class="car-flecha car-ant" type="button" aria-controls="car-pista-origen" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="car-flecha car-sig" type="button" aria-controls="car-pista-origen" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      <p class="car-cuenta" aria-hidden="true"></p>
+    </div>
+  </div>
+  <p class="sr car-vivo" aria-live="polite" aria-atomic="true"></p>
+</div>
       <ol class="cadena">
         <li class="ficha">
           <h3>Genetics</h3>
@@ -482,11 +572,11 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
         </li>
         <li class="ficha">
           <h3>Nursery</h3>
-          <p>Every plant grows here before it goes out to a farm.</p>
+          <p>Every plant grows in our nursery before it goes out to a farm.</p>
         </li>
         <li class="ficha">
           <h3>Farms and growers</h3>
-          <p>Our own farms and a network of partner growers who plant those varieties and sell us their harvest.</p>
+          <p>Our own farms and a network of partner growers who plant those varieties.</p>
         </li>
         <li class="ficha">
           <h3>Packing</h3>
@@ -535,15 +625,23 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
             <p>We went to see how they grow in Chile and Peru. Back in Arcabuco, we planted in substrate bags under tunnels, using plants from the nursery.</p>
             <figure class="hito-foto vertical">
               <img src="/img/historia-mata-bolsa-fruta.jpg" srcset="/img/historia-mata-bolsa-fruta-1200.jpg 795w, /img/historia-mata-bolsa-fruta.jpg 1457w" sizes="(max-width: 859.98px) min(92vw, 26rem), 26rem" width="1457" height="2200" loading="lazy" decoding="async"
-                alt="Blueberry bush in a grow bag with substrate and a dripper, with a cluster of blue berries and many green ones">
+                alt="Blueberry plant in a grow bag with substrate and a dripper, with a cluster of blue berries and many green ones">
             </figure>
+          </div>
+        </li>
+        <li class="hito">
+          <p class="anio">2021</p>
+          <div class="cuerpo">
+            <h3>Our crop in 2021</h3>
+            <p>In April 2021 we published this video of our crop in Boyacá. It shows how things looked back then.</p>
+            <a class="hito-enlace" href="https://www.youtube.com/watch?v=4Bd-02ex-YQ" target="_blank" rel="noopener">Watch the 2021 video on YouTube<span class="sr"> opens in a new tab</span></a>
           </div>
         </li>
         <li class="hito">
           <p class="anio">Today</p>
           <div class="cuerpo">
             <h3>Five Colombian departments</h3>
-            <p>We're in Boyacá, Cundinamarca, Tolima, Antioquia and Putumayo. We have our own farms, and partner growers who plant stock from our nursery and sell us their harvest.</p>
+            <p>We're in Boyacá, Cundinamarca, Tolima, Antioquia and Putumayo. We have our own farms, and partner growers who work to our technical standards.</p>
             <figure class="hito-foto entera">
               <img src="/img/red-tuneles-vista-aerea.jpg" srcset="/img/red-tuneles-vista-aerea-1200.jpg 1200w, /img/red-tuneles-vista-aerea.jpg 1600w" sizes="(max-width: 859.98px) 92vw, 920px" width="1600" height="1200" style="--ar:1600/1200" loading="lazy" decoding="async"
                 alt="Polytunnels on one of our network's farms, seen from the air">
@@ -554,14 +652,14 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
           <p class="anio">Today</p>
           <div class="cuerpo">
             <h3>A harvest we can schedule</h3>
-            <p>Pruning shears set when we harvest. The work runs all year.</p>
+            <p>We schedule our pruning so production stays flexible all 52 weeks of the year.</p>
           </div>
         </li>
         <li class="hito largo">
           <p class="anio">Next</p>
           <div class="cuerpo">
             <h3>Looking beyond Colombia</h3>
-            <p>Of every 100 hectares of blueberries in the world, less than one is in Colombia (IBO, 2026). Our fruit already reaches supermarkets and homes in Colombia, and we're looking toward export.</p>
+            <p>Of every 100 hectares of blueberries in the world, less than one is in Colombia (IBO, 2026). Our fruit already reaches homes and Colombia's top supermarkets, and we're looking toward export.</p>
           </div>
         </li>
       </ol>
@@ -602,8 +700,8 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
       <p class="label">For business</p>
       <h2 id="h-empresas">If it's business, write to us</h2>
       <div class="publicos">
-        <div><h3>Supermarkets and institutional buyers</h3><p>Our blueberries are sold at Carulla and Éxito. We supply supermarkets in Colombia. The fruit comes in two packs, Jumbo 250 g and Extra 500 g.</p></div>
-        <div><h3>Partners and investors</h3><p>We run a vertically integrated operation, from plant to pack, and we're looking toward export. We share the detail by email.</p></div>
+        <div><h3>Supermarkets and institutional buyers</h3><p>We supply Colombia's top supermarkets.</p></div>
+        <div><h3>Contact</h3><p>We run a vertically integrated operation, from plant to pack, and we're looking toward export. We share the detail by email.</p></div>
       </div>
       <div class="contacto">
         <div>
@@ -762,6 +860,189 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
     function select(){ var r = document.createRange(); r.selectNodeContents(document.getElementById("correo")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, select); else select();
   });
+
+  // Carrusel del proceso, en Origen: flechas, teclado (← →, Inicio y Fin) y dedo. No cambia solo.
+  // Las fotos cargan perezosas; cuando el carrusel se acerca a la pantalla, se adelanta la siguiente.
+  function carrusel(root){
+    var pista = root.querySelector(".car-pista"), ventana = root.querySelector(".car-ventana");
+    var ant = root.querySelector(".car-ant"), sig = root.querySelector(".car-sig");
+    var cuenta = root.querySelector(".car-cuenta"), vivo = root.querySelector(".car-vivo");
+    var i = 0, cerca = false;
+    function dias(){ return pista.querySelectorAll(".car-dia"); }
+    function texto(n, total){ return (root.getAttribute("data-contador") || "{n} / {total}").replace("{n}", n).replace("{total}", total); }
+    function cargar(d){ var img = d && d.querySelector("img"); if (img && img.loading === "lazy") img.loading = "eager"; }
+    function ir(k, anunciar){
+      var ds = dias(), n = ds.length;
+      if (!n) return;
+      i = Math.max(0, Math.min(n - 1, k));
+      pista.style.setProperty("--car-i", i);
+      pista.style.removeProperty("--car-dx");
+      for (var j = 0; j < n; j++) { if (j === i) ds[j].removeAttribute("aria-hidden"); else ds[j].setAttribute("aria-hidden", "true"); }
+      cuenta.textContent = texto(i + 1, n);
+      ant.setAttribute("aria-disabled", i === 0 ? "true" : "false");
+      sig.setAttribute("aria-disabled", i === n - 1 ? "true" : "false");
+      root.classList.toggle("una", n < 2);
+      if (anunciar) { var l = ds[i].querySelector(".car-leyenda"); vivo.textContent = texto(i + 1, n) + (l ? ". " + l.textContent : ""); }
+      cargar(ds[i]);
+      if (cerca) cargar(ds[i + 1]);
+    }
+    ant.addEventListener("click", function(){ ir(i - 1, true); });
+    sig.addEventListener("click", function(){ ir(i + 1, true); });
+    root.addEventListener("keydown", function(e){
+      var k = {ArrowLeft: i - 1, ArrowRight: i + 1, Home: 0, End: dias().length - 1}[e.key];
+      if (k === undefined || e.altKey || e.ctrlKey || e.metaKey) return;
+      e.preventDefault();
+      ir(k, true);
+    });
+    // Con el dedo: la foto sigue al dedo; si se desliza más de una quinta parte (máximo 80 px), pasa.
+    var x0 = null, y0 = 0, dx = 0, mueve = false, dedo = null;
+    pista.addEventListener("pointerdown", function(e){
+      if (e.pointerType === "mouse" || dias().length < 2) return;
+      x0 = e.clientX; y0 = e.clientY; dx = 0; mueve = false; dedo = e.pointerId;
+    });
+    pista.addEventListener("pointermove", function(e){
+      if (x0 === null || e.pointerId !== dedo) return;
+      dx = e.clientX - x0;
+      if (!mueve) {
+        if (Math.abs(dx) < 8) return;
+        if (Math.abs(e.clientY - y0) > Math.abs(dx)) { x0 = null; return; }  // va bajando la página
+        mueve = true;
+        pista.classList.add("arrastrando");
+        try { pista.setPointerCapture(dedo); } catch (_) {}
+      }
+      if ((i === 0 && dx > 0) || (i === dias().length - 1 && dx < 0)) dx = dx / 3;  // en la primera y la última, resiste
+      pista.style.setProperty("--car-dx", dx + "px");
+    });
+    function soltar(){
+      if (x0 === null) return;
+      x0 = null;
+      if (!mueve) return;
+      pista.classList.remove("arrastrando");
+      var limite = Math.min(80, ventana.clientWidth * 0.2);
+      ir(dx < -limite ? i + 1 : dx > limite ? i - 1 : i, Math.abs(dx) > limite);
+    }
+    pista.addEventListener("pointerup", soltar);
+    pista.addEventListener("pointercancel", soltar);
+    // Profundidad con el mouse: la foto se mueve apenas, al revés del cursor (el CSS la acerca y la apaga con «reducir movimiento»).
+    if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      ventana.addEventListener("mousemove", function(e){
+        var r = ventana.getBoundingClientRect();
+        ventana.style.setProperty("--car-mx", (-((e.clientX - r.left) / r.width - 0.5) * 22).toFixed(1) + "px");
+        ventana.style.setProperty("--car-my", (-((e.clientY - r.top) / r.height - 0.5) * 14).toFixed(1) + "px");
+      });
+      ventana.addEventListener("mouseleave", function(){ ventana.style.removeProperty("--car-mx"); ventana.style.removeProperty("--car-my"); });
+    }
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function(es){
+        if (!es[0].isIntersecting) return;
+        cerca = true; io.disconnect(); cargar(dias()[i + 1]);
+      }, {rootMargin: "300px 0px"});
+      io.observe(root);
+    } else { cerca = true; }
+    // El editor (src/editor.py) cambia las diapositivas sin recargar y después llama a sbIr.
+    root.sbIr = function(k){ ir(k, false); };
+    root.sbActual = function(){ return i; };
+    root.classList.add("listo");
+    ir(0, false);
+  }
+  document.querySelectorAll(".carrusel").forEach(carrusel);
+
+  // Formulario de contacto, en la sección Contacto. src/build.py solo lo deja en la página cuando tiene
+  // la dirección de la aplicación web de Google (herramientas/formulario/Codigo.gs). En el editor de textos
+  // sale siempre, para poder cambiar sus textos, pero no envía nada.
+  var caja = document.getElementById("contacto");
+  if (caja && caja.querySelector("form")) (function(){
+    var destino = caja.getAttribute("data-destino") || "";
+    var enEditor = !!document.querySelector("sb-t");
+    var activo = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]{20,}\/exec$/.test(destino)
+      || /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?\//.test(destino);  // servidor de prueba local
+    if (!activo && !enEditor) {  // sin dirección no hay formulario, ni enlaces a él
+      caja.hidden = true;
+      document.querySelectorAll('a[href="#contacto"]').forEach(function(a){ a.parentNode.hidden = true; });
+      return;
+    }
+    var f = document.getElementById("form-contacto"), boton = document.getElementById("f-enviar");
+    var mal = document.getElementById("form-mal"), bien = document.getElementById("form-bien");
+    var intentado = false, enviando = false;
+    var CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    function valor(n){ return (f.elements[n].value || "").trim(); }
+    var reglas = {
+      nombre: function(){ return valor("nombre") ? "" : "vacio"; },
+      correo: function(){ var v = valor("correo"); return !v ? "vacio" : (CORREO.test(v) ? "" : "mal"); },
+      asunto: function(){ return valor("asunto") ? "" : "vacio"; },
+      mensaje: function(){ return valor("mensaje") ? "" : "vacio"; },
+      autoriza: function(){ return f.elements.autoriza.checked ? "" : "vacio"; }
+    };
+    function campo(n){ return f.querySelector('[data-campo="' + n + '"]'); }
+    function control(n){ return campo(n).querySelector("input,select,textarea"); }
+    // Muestra (o quita) el error de un campo, junto al campo, y se lo dice al lector de pantalla.
+    function marcar(n, clave){
+      var c = campo(n), el = control(n), id = "";
+      c.querySelectorAll(".error").forEach(function(e){
+        var ver = e.getAttribute("data-e") === clave;
+        e.hidden = !ver;
+        if (ver) id = e.id;
+      });
+      c.classList.toggle("invalido", !!clave);
+      if (clave) { el.setAttribute("aria-invalid", "true"); el.setAttribute("aria-describedby", id); }
+      else { el.removeAttribute("aria-invalid"); el.removeAttribute("aria-describedby"); }
+    }
+    function revisar(n){ var clave = reglas[n](); marcar(n, clave); return !clave; }
+    Object.keys(reglas).forEach(function(n){
+      var el = control(n), elige = el.type === "checkbox" || el.tagName === "SELECT";
+      // Al salir de un campo se revisa, si ya tiene algo escrito o si ya se intentó enviar.
+      el.addEventListener("blur", function(){ if (intentado || (el.value && !elige)) revisar(n); });
+      // Si el campo tiene un error, se quita apenas queda bien.
+      el.addEventListener(elige ? "change" : "input", function(){ if (campo(n).classList.contains("invalido")) revisar(n); });
+    });
+    function ocupado(si){
+      enviando = si;
+      boton.setAttribute("aria-disabled", si ? "true" : "false");
+      boton.querySelector(".b-0").hidden = si;
+      boton.querySelector(".b-1").hidden = !si;
+      f.setAttribute("aria-busy", si ? "true" : "false");
+    }
+    function listo(){ f.reset(); f.hidden = true; bien.hidden = false; bien.focus(); }
+    function fallo(respuesta){
+      ocupado(false);
+      var n = respuesta && respuesta.error === "datos" && respuesta.campo;
+      if (n && reglas[n]) { marcar(n, reglas[n]() || (n === "correo" ? "mal" : "vacio")); control(n).focus(); return; }
+      mal.hidden = false; mal.focus();
+    }
+    // El texto de la autorización tal como lo vio la persona, sin lo que solo oye el lector de pantalla.
+    function textoAutorizacion(){
+      var copia = document.getElementById("t-autoriza").cloneNode(true);
+      copia.querySelectorAll(".sr").forEach(function(s){ s.remove(); });
+      return copia.textContent.replace(/\s+/g, " ").trim();
+    }
+    f.addEventListener("submit", function(e){
+      e.preventDefault();
+      if (enviando) return;
+      intentado = true;
+      mal.hidden = true;
+      var primero = null;
+      Object.keys(reglas).forEach(function(n){ if (!revisar(n) && !primero) primero = n; });
+      if (primero) { control(primero).focus(); return; }
+      // Campo trampa: si un programa lo llenó, se le dice «listo» sin enviar nada.
+      if (f.elements.sitio_web.value) { listo(); return; }
+      if (!activo) return;  // en el editor de textos no se envía nada
+      var datos = new URLSearchParams();
+      ["nombre", "correo", "asunto", "mensaje"].forEach(function(n){ datos.append(n, valor(n)); });
+      datos.append("autoriza", "si");
+      datos.append("autorizacion_texto", textoAutorizacion());
+      datos.append("politica", document.getElementById("politica").href);
+      datos.append("idioma", lang);
+      datos.append("pagina", location.href.split("#")[0]);
+      datos.append("sitio_web", "");
+      ocupado(true);
+      var corte = window.AbortController ? new AbortController() : null;
+      var tope = setTimeout(function(){ if (corte) corte.abort(); }, 25000);
+      fetch(destino, {method: "POST", body: datos, signal: corte ? corte.signal : undefined})
+        .then(function(r){ return r.ok ? r.json() : Promise.reject(null); })
+        .then(function(j){ clearTimeout(tope); if (j && j.ok) { ocupado(false); listo(); } else fallo(j); })
+        .catch(function(){ clearTimeout(tope); fallo(null); });
+    });
+  })();
 
 })();
 </script>
