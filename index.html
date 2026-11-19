@@ -468,6 +468,7 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
         <li><a href="#historia">Nuestra historia</a></li>
         <li><a href="#empresas">Para empresas</a></li>
         <li><a href="#casa">Para tu casa</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
       <div class="langs">
         <a class="lang-b" href="/" hreflang="es" lang="es" aria-label="Cambiar idioma a español" aria-current="page">ES</a>
@@ -737,8 +738,64 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
         </figure>
       </div>
       <div class="pedido">
-        <p class="lede">Hacemos domicilios en Bogotá y Sabana Norte, los jueves y sábados. Si estás en otra ciudad o compras para un supermercado, escríbenos a <a href="mailto:info@sabanablues.com">info@sabanablues.com</a>.</p>
+        <p class="lede">Hacemos domicilios en Bogotá y Sabana Norte, los jueves y sábados. Si estás en otra ciudad o compras para un supermercado, llena el siguiente formulario.</p>
         <a class="btn btn-accent wa" href="https://wa.me/573108071143?text=Hola%2C%20quiero%20pedir%20ar%C3%A1ndanos%20a%20domicilio.%20Estoy%20en%20" target="_blank" rel="noopener">Pedir por WhatsApp<span class="sr"> se abre en otra pestaña</span></a>
+      </div>
+    </div>
+  </section>
+  <section class="band escribenos" id="contacto" aria-labelledby="h-contacto" data-destino="https://script.google.com/macros/s/AKfycbwD5oeVWLmxoarU6qIWpl_XihxKLtOnZpA95CvbtbHFeT2wDtn12TCKYBCFBqkXy7NfXg/exec">
+    <div class="wrap escribenos-grid">
+      <div class="escribenos-cab">
+        <h2 id="h-contacto">Escríbenos</h2>
+        <p class="lede">Escoge el asunto, cuéntanos qué necesitas y te respondemos por correo.</p>
+      </div>
+      <div class="escribenos-caja">
+        <form id="form-contacto" novalidate aria-labelledby="h-contacto">
+          <div class="campos">
+            <div class="campo" data-campo="nombre">
+              <label for="f-nombre">Nombre</label>
+              <input class="caja" id="f-nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required>
+              <p class="error" id="e-nombre-vacio" data-e="vacio" hidden>Escribe tu nombre.</p>
+            </div>
+            <div class="campo" data-campo="correo">
+              <label for="f-correo">Correo</label>
+              <input class="caja" id="f-correo" name="correo" type="email" autocomplete="email" maxlength="150" spellcheck="false" autocapitalize="off" required>
+              <p class="error" id="e-correo-vacio" data-e="vacio" hidden>Escribe tu correo, para poder responderte.</p>
+              <p class="error" id="e-correo-mal" data-e="mal" hidden>Revisa tu correo: le falta la @ o lo que va después.</p>
+            </div>
+            <div class="campo ancho" data-campo="asunto">
+              <label for="f-asunto">Asunto</label>
+              <select class="caja" id="f-asunto" name="asunto" required>
+                <option value="" selected disabled>Escoge un asunto</option>
+                <option value="proyectos">Proyectos e inversión</option>
+                <option value="plantas">Plantas</option>
+                <option value="fruta">Fruta</option>
+                <option value="empresas">Empresas y supermercados</option>
+                <option value="prensa">Prensa y eventos</option>
+                <option value="otro">Otro</option>
+              </select>
+              <p class="error" id="e-asunto-vacio" data-e="vacio" hidden>Escoge un asunto de la lista.</p>
+            </div>
+            <div class="campo ancho" data-campo="mensaje">
+              <label for="f-mensaje">Mensaje</label>
+              <textarea class="caja" id="f-mensaje" name="mensaje" rows="6" maxlength="3000" required></textarea>
+              <p class="error" id="e-mensaje-vacio" data-e="vacio" hidden>Escribe tu mensaje.</p>
+            </div>
+            <div class="campo ancho" data-campo="autoriza">
+              <label class="casilla"><input id="f-autoriza" name="autoriza" type="checkbox" value="si" required><span id="t-autoriza">Autorizo a Sabana Blues a usar mis datos para responder este mensaje. <a id="politica" href="/privacidad/" target="_blank" rel="noopener">Ver la política de datos<span class="sr"> se abre en otra pestaña</span></a></span></label>
+              <p class="error" id="e-autoriza-vacio" data-e="vacio" hidden>Para enviar el mensaje, marca esta casilla.</p>
+            </div>
+          </div>
+          <div class="trampa" aria-hidden="true"><input name="sitio_web" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="enviar">
+            <button class="btn btn-primary" id="f-enviar" type="submit"><span class="b-0">Enviar</span><span class="b-1" hidden>Enviando…</span></button>
+          </div>
+          <div class="aviso-form mal" id="form-mal" tabindex="-1" hidden><p>No pudimos enviar tu mensaje. Lo que escribiste sigue aquí: inténtalo otra vez en un momento o escríbenos a <a href="mailto:info@sabanablues.com">info@sabanablues.com</a>.</p></div>
+        </form>
+        <div class="aviso-form bien" id="form-bien" tabindex="-1" hidden>
+          <p class="t">Recibimos tu mensaje</p>
+          <p>Te respondemos al correo que nos dejaste.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -790,6 +847,7 @@ main > section.band:last-child > .wrap{padding-bottom:var(--section-y)}
           <li><a href="#historia">Nuestra historia</a></li>
           <li><a href="#empresas">Para empresas</a></li>
           <li><a href="#casa">Para tu casa</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
       <div>
